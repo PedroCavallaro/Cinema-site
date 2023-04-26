@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+h1{
+    color: white;
+}
+h3{
+    color: white;
+}
+label{
+    color: white;
+}
+p{
+    color: white;
+}
+.movies{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    height: 500px;
+}
+
+body{
+    background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+header{
+    background: linear-gradient(to right ,#000000, #4f2423, #790909, #000000);
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+.headerContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+}
+.userHeader{
+    display: flex;
+    justify-content: space-around;
+    column-gap: 10px;
+}
+.imgFilter:hover{
+    width: 50px;
+    height: 50px;
+    transition: 0.2s;
+}
+
+#logo:hover{
+    width: 60px;
+    height: 60px;
+    transition: 0.2s; 
+}
+input[type='text']{
+    border: 2px solid red;
+    height: 20px;
+    border-radius: 15px;
+    font-size: 15px;
+    padding-left: 5px;
+    outline: 0;
+    width: 400px;
+    background-color: #2f2828;
+}
+input:focus{
+    border: 2px solid red;
+    height: 25px;
+    background-color: white;
+    transition: 0.2s;
+}
+.shopCart{
+    position: relative;
+}
+#amount.show{
+    position: absolute;
+    background-color: red;
+    border: 0px solid black;
+    border-radius: 50%;
+    right: -4px;
+    font-size: 10px;
+    color:black;
+    font-weight: bold; 
+}
+.username{
+    display: flex;
+    flex-direction: column;
+}
+input:hover{
+    border: 2px solid red;
+    height: 25px;
+    background-color: white;
+    transition: 0.3ms ease-in-out;
+}
+#searchButton{
+    all: unset;
+    border: 2px solid red;
+    background-color: #2f2828;
+    border-radius: 15px;
+    height: 25px;
+    width: 70px;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+}
+#searchButton:hover{
+    border: 2px solid rgb(126, 25, 25);
+    transition: 0.2s;
+}
+.showOff{
+    margin-top: 10px;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+#trailer{
+    border: 0px;
+}
+
+.movieImg{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    transition: opacity .2s ease-out;  
+}
+.card{
+    width: 20rem;
+    height: 30rem;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2) ;
+}
+.card  h1{
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.card .movieContent{
+    position: absolute;
+    bottom: 0px;
+    opacity: 0;
+}
+.card:hover{
+    opacity: 0.7;
+    transition: 0.3s;
+}
+.card:hover h1{
+    opacity: 1;
+    bottom:70px;
+    transition:0.9ms ease-in;   
+}
+.card:hover .movieContent{
+    opacity: 1;
+    transition: 1.5s;
+    text-transform: capitalize;
+}

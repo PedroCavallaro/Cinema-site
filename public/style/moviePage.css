@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);
+    height: 50px;
+}
+header img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+header img:hover{
+    width: 35px;
+    height: 35px;
+    transition: 0.4s ease-in-out;  
+    filter: contrast(5%);
+    /* box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2); */
+}
+body{
+    background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);
+    background-repeat: no-repeat;
+    height: 100dvh;
+    width: 100dvw;
+}
+.movieContainer{
+    background-color: rgb(34, 4, 4);
+    box-shadow: 0px 10px 9  0px 100px rgba(43, 1, 1, 0.2) ;
+}
+.card{
+    display: flex;
+}
+.movieContentContainer{
+    position: relative;
+    
+}
+.movieContentContainer h1{
+    color: white;
+    text-transform: uppercase;
+}
+.movieContent{
+    width: 700px;
+    text-transform: capitalize;
+    color: white;
+    position: absolute;
+    bottom: 0;
+}
+#imgAncor{
+    margin-top: 5px;
+    position: relative;
+    box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2) ;
+    width: 20dvw;
+    height: 55dvh;
+}
+#imgAncor img{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+}
+
+.schedule{
+    margin-top: 10px;
+    color: white;
+    height: 10dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.schedule h1{
+    text-transform: capitalize;
+}
+.roomContainer{
+    margin-top:10px; 
+    column-gap: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.room{
+    color: rgb(255, 255, 255);
+    width: 180px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5%;
+    cursor: pointer;
+}
+.room:hover{
+    transition: 0.5s;
+    color:rgb(34, 4, 4);
+    border: 2px solid rgb(34, 4, 4);
+}
+.seatsMainContainer.show{
+    position: fixed;
+    z-index: 9999;
+    height: 100dvh;
+    width: 100dvw;
+    animation: showSeatsAni 2s;
+
+}
+.seatsContainer{
+    display: none;
+}
+.seatsContainer.show{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100dvw;
+    animation: showSeatsAni 2s;
+}
+.seatsChoseContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    background-color: black; 
+    height: 80dvh;
+    width: 50dvw;
+}
+.seatsChose{
+    top: 40%;
+    position: absolute;
+}
+.seatsChose > div > img {
+    height: 27px;
+    width: 27px;
+}
+.seat{
+    cursor: pointer;
+}
+.seat:hover{
+    filter: contrast(5%);
+}
+.seat.selected{
+    filter: contrast(5%)
+}
+.movieInfo{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.movieContentModal{
+    position:absolute;
+    color: white;
+    left: 18%;
+    height:32%;
+    width:70%;
+    top: 0;
+}
+.movieContentModal > h1{
+    text-transform: capitalize;
+}
+
+#moviePoster{
+    height: 200px;
+    width: 130px;
+}
+@keyframes showSeatsAni {
+    from{
+        top:-10%;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
