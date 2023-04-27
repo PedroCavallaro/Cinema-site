@@ -1,6 +1,8 @@
 <?php
 
 function connect(){
+    setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
+    date_default_timezone_set('Europe/Lisbon');
     $dsn = "mysql:host=localhost;dbname=cinema";
     $username="root";
     $password ="";
@@ -19,9 +21,8 @@ function searchUser($username, $password){
 
     $result = $bd->query($sql);
     $data = $result->fetch(PDO::FETCH_ASSOC);
-    
     return $data;
-                
+               
 }
 
 function searchUsername($username){
@@ -80,8 +81,8 @@ function renderMoviesCard(){
          INNER JOIN data d
          ON f.id_data = d.id_horario";
      $result = $conn->query($sql);
-
-    while($data = $result->fetch(PDO::FETCH_ASSOC)){
+     
+     while($data = $result->fetch(PDO::FETCH_ASSOC)){
         echo renderCard($data);
     }
 }
@@ -129,10 +130,14 @@ function renderMovie($movieId){
     "<div class='movieContentContainer'>
         <h1 id='movieId".$data["id_filme"]."'>".$data["nm_filme"]."</h1>
         <div class='movieContent'>
-            <p>SINÓPSE: ".$data["descricao"]."</p>
-            <p id='movieTime".$data["id_filme"]."'>Duração | ". $data["duracao"]." min
-            <p>GÊNERO: ".convert($data)."</p>
-            <p>ÁUDIO: ".$data["ds_idioma"]."</p>
+            <p class='infoP' id='sinopse'>SINÓPSE:</p>
+            <p> ".mb_convert_encoding($data["descricao"], 'UTF-8', 'ISO-8859-1')."</p>
+            <p id='movieTime".$data["id_filme"]."' class='infoP'>DURAÇÂO:</p>
+            <p> ". $data["duracao"]." min
+            <p class='infoP'>GÊNERO:</p>
+            <p> ".convert($data)."</p>
+            <p class='infoP'>ÁUDIO: </p>
+            <p>".$data["ds_idioma"]."</p>
         </div>
     </div>
 </div>";
@@ -181,10 +186,10 @@ function movieInfoSeatsChoice(){
         $data = $result->fetch(PDO::FETCH_ASSOC);
 
         return "<h1 id='movieId".$data["id_filme"]."'>".$data["nm_filme"]."</h1>
-                <p id='movieTime".$data["id_filme"]."'>Duração | ". $data["duracao"]." min
-                <p>Gênero | ".convert($data)."</p>
-                <p>Sala | ".$data["nm_sala"]."</p>
-                <p>Horário | ".$data["horario"]."</p>";
+                <p id='movieTime".$data["id_filme"]."'>Duração: ". $data["duracao"]." min
+                <p>Gênero: ".convert($data)."</p>
+                <p id='roomPick'></p>
+                <p id='roomTime'>Horario: </p>";
 }
 
 function getRooms(){

@@ -1,7 +1,7 @@
 <?php
     include_once "../src/data.php";
     $username = filter_input(INPUT_GET, "username", FILTER_SANITIZE_STRING);
-    if(isset($_COOKIE["logged"])){
+    if(!isset($username)){
         header("location:./loginPage.php");
     }
 ?>
@@ -31,7 +31,7 @@
                 <img src="img/logoTest.png" class="imgFilter" id="userIcon" width="40px" height="40px" alt="user icon">
                 <div class="username">
                     <h3>Ola,</h3>
-                    <h3 id="usernameH3"></h3>
+                    <h3 id="usernameH3"><?=$username?></h3>
                 </div>
             </div>
         </div>
@@ -48,6 +48,6 @@
             ?>
         </div>
     </main>
-    <script src="dist/index.js"></script>
+    <script type="module" src="dist/index.js"></script>
 </body>
 </html>

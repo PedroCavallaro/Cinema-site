@@ -1,30 +1,54 @@
-const imgAncor = document.querySelector("#imgAncor"), homeButton = document.querySelector("#homeButton"), seatsChose = document.querySelector(".seatsChose"), seatsLetter = [] = "ABCDEFGHIJK".split(''), roomButton = document.querySelectorAll(".room"), showSeats = document.querySelector(".seatsContainer"), seatsMainContainer = document.querySelector(".seatsMainContainer"), movieImg = document.querySelector(".movieImg"), moviePoster = document.querySelector("#moviePoster"), today = document.querySelector("#today"), date = new Date(), ticketAmount = document.querySelector("#ticketAmount"), saveText = [];
+const movieModal = {
+    movieName: document.querySelector(".movieContentContainer").children[0].innerHTML,
+    seatsChose: document.querySelector(".seatsChose"),
+    showSeats: document.querySelector(".seatsContainer"),
+    seatsMainContainer: document.querySelector(".seatsMainContainer"),
+    moviePoster: document.querySelector("#moviePoster"),
+    ticketAmount: document.querySelector("#ticketAmount")
+};
+const mainItens = {
+    imgAncor: document.querySelector("#imgAncor"),
+    roomButton: document.querySelectorAll(".room"),
+    movieImg: document.querySelector(".movieImg"),
+    today: document.querySelector("#today"),
+    homeBAnchor: document.querySelector("#homeBAnchor")
+};
+const seatsLetter = [] = "ABCDEFGHIJK".split(''), date = new Date(), urlMp = new URLSearchParams(window.location.search), usernameMp = urlMp.get("username");
+let saveText = [];
 window.addEventListener("load", async () => {
-    await test();
-    imgAncor.removeAttribute("href");
-    createSeats(seatsChose);
-    today.innerText = String(date.getDate()) + " / " + String(date.getMonth() + 1);
+    // const  movieData = await search(movieModal.movieName)
+    mainItens.homeBAnchor.href = `index.php?username=${usernameMp}`;
+    mainItens.imgAncor.removeAttribute("href");
+    createSeats(movieModal.seatsChose);
+    mainItens.today.innerText = String(date.getDate()) + " / " + String(date.getMonth() + 1);
 });
-roomButton.forEach((e) => {
+mainItens.roomButton.forEach((e) => {
     e.addEventListener("click", () => {
-        showSeats.classList.add("show");
-        seatsMainContainer.classList.add("show");
-        moviePoster.src = movieImg.src;
+        const roomEle = {
+            roomTime: document.querySelector("#roomTime"),
+            roomNodes: e.childNodes,
+            roomPick: document.querySelector("#roomPick")
+        };
+        movieModal.showSeats.classList.add("show");
+        movieModal.seatsMainContainer.classList.add("show");
+        movieModal.moviePoster.src = mainItens.movieImg.src;
         const seatsList = document.querySelectorAll(".seat");
+        //h3
+        roomEle.roomPick.innerHTML = roomEle.roomNodes[1].textContent;
+        //p 
+        roomEle.roomTime.innerHTML += roomEle.roomNodes[3].textContent;
         seatsList.forEach((e) => {
             e.addEventListener("click", () => {
                 if (!(e.classList.contains("selected"))) {
                     e.classList.add("selected");
-                    saveText.push((" " + e.id + " |"));
-                    ticketAmount.innerText += saveText[saveText.length - 1];
+                    saveText.push((e.id + "|"));
+                    movieModal.ticketAmount.innerText += saveText[saveText.length - 1];
                 }
                 else {
                     e.classList.remove("selected");
-                    const newSaveText = saveText.filter((e) => {
-                        return e !== (" " + e.id + " |");
-                    });
-                    console.log(saveText.join());
-                    ticketAmount.innerHTML = `Assentos | ${newSaveText.join(" ")} `;
+                    saveText = saveText.filter(ele => ele !== (e.id + "|"));
+                    console.log(saveText.join(""));
+                    movieModal.ticketAmount.innerHTML = `Assentos: ${saveText.join(" ")}   `;
                 }
             });
         });
@@ -44,9 +68,4 @@ function createSeats(divMain) {
         }
     }
 }
-async function test() {
-    const response = await fetch("https://api.themoviedb.org/3/search/movie")
-        .then((res) => res.json())
-        .then((data) => console.log(data));
-    console.log(response);
-}
+export {};

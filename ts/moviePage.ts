@@ -1,47 +1,66 @@
-const imgAncor: HTMLAnchorElement = document.querySelector("#imgAncor"),
-    homeButton: HTMLAnchorElement = document.querySelector("#homeButton"),
-    seatsChose: HTMLDivElement = document.querySelector(".seatsChose"),
-    seatsLetter = [] = "ABCDEFGHIJK".split(''),
-    roomButton: NodeListOf<Element> = document.querySelectorAll(".room"),
-    showSeats: HTMLDivElement = document.querySelector(".seatsContainer"),
-    seatsMainContainer: HTMLDivElement = document.querySelector(".seatsMainContainer"),
-    movieImg: HTMLImageElement = document. querySelector(".movieImg"),
-    moviePoster: HTMLImageElement = document.querySelector("#moviePoster"),
-    today: HTMLTitleElement = document.querySelector("#today"),
+import * as interfaces from "./interfaces.js"
+
+const movieModal: interfaces.modalItens = {
+    movieName: document.querySelector(".movieContentContainer").children[0].innerHTML,
+    seatsChose: document.querySelector(".seatsChose"),
+    showSeats: document.querySelector(".seatsContainer"),
+    seatsMainContainer: document.querySelector(".seatsMainContainer"),
+    moviePoster: document.querySelector("#moviePoster"),
+    ticketAmount: document.querySelector("#ticketAmount")
+}
+
+const mainItens: interfaces.mainPageItens = {
+    imgAncor: document.querySelector("#imgAncor"),
+    roomButton: document.querySelectorAll(".room"),
+    movieImg: document. querySelector(".movieImg"),
+    today: document.querySelector("#today"),
+    homeBAnchor: document.querySelector("#homeBAnchor")
+}
+const seatsLetter = [] = "ABCDEFGHIJK".split(''),
     date = new Date(),
-    ticketAmount:HTMLTitleElement = document.querySelector("#ticketAmount"),
-    saveText = []
-
-
+    urlMp: URLSearchParams = new URLSearchParams(window.location.search),
+    usernameMp:string = urlMp.get("username")
+let saveText = []
+    
+    
 window.addEventListener("load",async ()=>{
-    await test()
-    imgAncor.removeAttribute("href")
-    createSeats(seatsChose)
-    today.innerText = String(date.getDate()) +" / " + String(date.getMonth() + 1) 
+    // const  movieData = await search(movieModal.movieName)
+    mainItens.homeBAnchor.href = `index.php?username=${usernameMp}`
+    mainItens.imgAncor.removeAttribute("href")
+    createSeats(movieModal.seatsChose)
+    mainItens.today.innerText = String(date.getDate()) +" / " + String(date.getMonth() + 1) 
 
 })
-roomButton.forEach((e)=>{
+mainItens.roomButton.forEach((e)=>{
     e.addEventListener("click", ()=>{
-        showSeats.classList.add("show")
-        seatsMainContainer.classList.add("show")
-        moviePoster.src = movieImg.src
-        const seatsList: NodeListOf<Element> = document.querySelectorAll(".seat")
+        const roomEle: interfaces.roomElements = {
+            roomTime:document.querySelector("#roomTime"),
+            roomNodes:e.childNodes,
+            roomPick: document.querySelector("#roomPick")
+        }
 
+        movieModal.showSeats.classList.add("show")
+        movieModal.seatsMainContainer.classList.add("show")
+        movieModal.moviePoster.src = mainItens.movieImg.src
+        const seatsList: NodeListOf<Element> = document.querySelectorAll(".seat")
+        //h3
+        roomEle.roomPick.innerHTML = roomEle.roomNodes[1].textContent
+        //p 
+        roomEle.roomTime.innerHTML += roomEle.roomNodes[3].textContent
         seatsList.forEach((e)=>{
             e.addEventListener("click", ()=>{
                 if(!(e.classList.contains("selected"))){
-                    e.classList.add("selected")
-                    saveText.push((" " + e.id + " |"))
 
-                    ticketAmount.innerText += saveText[saveText.length -1]
+                    e.classList.add("selected")
+                    saveText.push((e.id + "|"))
+
+                    movieModal.ticketAmount.innerText += saveText[saveText.length -1]
                 
                 }else{
                     e.classList.remove("selected")
-                    const newSaveText = saveText.filter((e) =>{
-                        return  e !==  (" " + e.id + " |")
-                    })
-                    console.log(saveText.join())
-                    ticketAmount.innerHTML = `Assentos | ${newSaveText.join(" ")} `
+                    saveText = saveText.filter(ele => ele !== (e.id+"|"))
+                    console.log(saveText.join(""))
+                    movieModal.ticketAmount.innerHTML = `Assentos: ${saveText.join(" ")}   `
                 }
             })
         })
@@ -63,11 +82,4 @@ function createSeats(divMain: HTMLDivElement){
         }
     }
 }
-async function test(){
-    const response = await fetch("https://api.themoviedb.org/3/search/movie")
-            .then((res) => res.json())
-            .then((data) => console.log(data))
 
-    console.log(response)
-
-}

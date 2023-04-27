@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <?php
-
+setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
+date_default_timezone_set('Europe/Lisbon');
 include_once "../src/data.php";
 $movieId = $_COOKIE["movieId"];
 
-
-
-
 ?>
-<html lang="en">
+<html lang="pt-BR">
 <head>
+    <meta http-equiv="Content-Type" content="text/html">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +29,7 @@ $movieId = $_COOKIE["movieId"];
                             ?>
                             <!-- <p id="movieName">asd</p>
                             <p id="duracao">asd</p> -->
-                            <p id="ticketAmount">Assentos |</p>
+                            <p id="ticketAmount">Assentos:</p>
                         </div>
                     </div>
                 </div>
@@ -41,7 +40,7 @@ $movieId = $_COOKIE["movieId"];
     </div>
     <header>
         <div>
-            <a href="index.php">
+            <a id="homeBAnchor"href="index.php">
                 <img id="homeButton" src="img/homeImg.png">
             </a>
         </div>
@@ -62,6 +61,6 @@ $movieId = $_COOKIE["movieId"];
             </div>
         </div>
     </main>
-    <script src="dist/moviePage.js"></script>
+    <script type="module" src="dist/moviePage.js"></script>
 </body>
 </html>
