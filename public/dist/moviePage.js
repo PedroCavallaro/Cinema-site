@@ -13,11 +13,10 @@ const mainItens = {
     today: document.querySelector("#today"),
     homeBAnchor: document.querySelector("#homeBAnchor")
 };
-const seatsLetter = [] = "ABCDEFGHIJK".split(''), date = new Date(), urlMp = new URLSearchParams(window.location.search), usernameMp = urlMp.get("username");
+const seatsLetter = [] = "ABCDEFGHIJK".split(''), date = new Date();
 let saveText = [];
 window.addEventListener("load", async () => {
     // const  movieData = await search(movieModal.movieName)
-    mainItens.homeBAnchor.href = `index.php?username=${usernameMp}`;
     mainItens.imgAncor.removeAttribute("href");
     createSeats(movieModal.seatsChose);
     mainItens.today.innerText = String(date.getDate()) + " / " + String(date.getMonth() + 1);

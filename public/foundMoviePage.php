@@ -2,8 +2,7 @@
     include_once "../src/data.php";
     $username = filter_input(INPUT_GET, "username", FILTER_SANITIZE_STRING);
     session_start();
-    if(!$_SESSION["logged"]){
-        header("location:./loginPage.php");
+    if(isset($_SESSION['foundMovies'])){
     }
 ?>
 <!DOCTYPE html>
@@ -18,7 +17,11 @@
 <body>
     <header class="headerIndex">
         <div class="headerContainer">
-            <img  id="logo" class="imgFilter" src="img/logo.png" height="50px" width="50px" alt="logo">
+            <?php
+                echo "<a href='./index.php'>
+                        <img  id='logo' class='imgFilter' src='img/logo.png' height='50px' width='50px' alt='logo'>
+                        </a>"
+            ?>
             <div>
                 <?php
                 
@@ -44,17 +47,26 @@
         </div>
     </header>
     <main>
+        <div class="results"> 
+            <h2>Resultados para: </h2>
+            <div>
+                <h2 id="search"></h2>
+            </div>
+        </div>
         <div class="showOff">
 
         </div>
         <div class="movies">
             <?php
-                
-                renderMoviesCard();
+                $foundMovie = $_SESSION["foundMovies"];
+                $c= count($foundMovie);
+                for ($i=0; $i < count($foundMovie) ; $i++) { 
+                    renderFoundMovie($foundMovie[$i]);
+                }
             
             ?>
         </div>
     </main>
-    <script type="module" src="dist/index.js"></script>
+    <script type="module" src="dist/foundMoviesPage.js"></script>
 </body>
 </html>

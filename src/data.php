@@ -1,5 +1,7 @@
 <?php
 
+
+
 function connect(){
     setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
     date_default_timezone_set('Europe/Lisbon');
@@ -68,18 +70,12 @@ function renderMoviesCard(){
          f.duracao,
          g.id_genero,
          g.nm_genero,
-         i.ds_idioma,
-         sa.nm_sala,
-         d.horario
+         i.ds_idioma
          FROM filme f
          INNER JOIN genero g
          ON f.id_genero = g.id_genero
          INNER JOIN idioma i
-         ON f.id_idioma = i.id_idioma
-         INNER JOIN salas sa
-         ON f.id_sala = sa.id_sala
-         INNER JOIN data d
-         ON f.id_data = d.id_horario";
+         ON f.id_idioma = i.id_idioma";
      $result = $conn->query($sql);
      
      while($data = $result->fetch(PDO::FETCH_ASSOC)){
@@ -88,14 +84,7 @@ function renderMoviesCard(){
 }
 
 function convert($data){
-    if($data["id_genero"] == "1"){
-        return "ação";
-    }
-    else if($data["id_genero"] == "2"){
-        return "animação";
-    }else {
-        return $data["nm_genero"];
-    }
+    return mb_convert_encoding($data, 'UTF-8', 'ISO-8859-1');
 }
 function renderMovie($movieId){
     $conn = connect();
@@ -124,36 +113,75 @@ function renderMovie($movieId){
         $result = $conn->query($sql);
         $data = $result->fetch(PDO::FETCH_ASSOC);
         echo "<div class='card' id='".$data["id_filme"]."'>
-          <a id='imgAncor' href='moviePage.php?username='> 
+          <a id='imgAncor' href='moviePage.php'> 
         <img src='./img/filme_id".$data["id_filme"].".jpg'"." class='movieImg' id='movie".$data["id_filme"]."' heigth='10px' width='100px'>
         </a>".
     "<div class='movieContentContainer'>
         <h1 id='movieId".$data["id_filme"]."'>".$data["nm_filme"]."</h1>
         <div class='movieContent'>
             <p class='infoP' id='sinopse'>SINÓPSE:</p>
-            <p> ".mb_convert_encoding($data["descricao"], 'UTF-8', 'ISO-8859-1')."</p>
+            <p> ".convert($data["descricao"])."</p>
             <p id='movieTime".$data["id_filme"]."' class='infoP'>DURAÇÂO:</p>
             <p> ". $data["duracao"]." min
             <p class='infoP'>GÊNERO:</p>
-            <p> ".convert($data)."</p>
+            <p> ".convert($data["nm_genero"])."</p>
             <p class='infoP'>ÁUDIO: </p>
             <p>".$data["ds_idioma"]."</p>
         </div>
     </div>
 </div>";
 }
-function renderCard($data){
-    $username = filter_input(INPUT_GET, "username", FILTER_SANITIZE_STRING);
-    return "<div class='card' id='".$data["id_filme"]."'>
-    
-        <a id='imgAncor' href='moviePage.php?username=".$username."'> 
+function renderFoundMovie($movieId){
+    $conn = connect();
+    $sql =  "SELECT 
+         f.id_filme,
+         f.nm_filme,
+         f.duracao,
+         g.id_genero,
+         g.nm_genero,
+         i.ds_idioma,
+         sa.nm_sala,
+         d.horario,
+         de.descricao
+         FROM filme f
+         INNER JOIN genero g
+         ON f.id_genero = g.id_genero
+         INNER JOIN idioma i
+         ON f.id_idioma = i.id_idioma
+         INNER JOIN salas sa
+         ON f.id_sala = sa.id_sala
+         INNER JOIN data d
+         ON f.id_data = d.id_horario
+         INNER JOIN descricao de
+         ON f.id_descricao = de.id_descricao
+         WHERE f.id_filme ='$movieId'";
+        $result = $conn->query($sql);
+        $data = $result->fetch(PDO::FETCH_ASSOC);
+        echo "<div class='card' id='".$data["id_filme"]."'>
+          <a id='imgAncor' href='moviePage.php'> 
         <img src='./img/filme_id".$data["id_filme"].".jpg'"." class='movieImg' id='movie".$data["id_filme"]."' heigth='10px' width='100px'>
         </a>".
     "<div class='movieContentContainer'>
         <h1 id='movieId".$data["id_filme"]."'>".$data["nm_filme"]."</h1>
         <div class='movieContent'>
-            <p id='movieTime".$data["id_filme"]."'>Duração | ". $data["duracao"]." min
-            <p>Gênero | ".convert($data)."</p>
+            <p id='movieTime".$data["id_filme"]."'>Duração | ". $data["duracao"]." min</p>
+            <p>Gênero | ".convert($data["nm_genero"])."</p>
+            <p>Áudio | ".$data["ds_idioma"]."</p>
+        </div>
+    </div>
+</div>";
+}
+function renderCard($data){
+    return "<div class='card' id='".$data["id_filme"]."'>
+    
+        <a id='imgAncor' href='moviePage.php'> 
+        <img src='./img/filme_id".$data["id_filme"].".jpg'"." class='movieImg' id='movie".$data["id_filme"]."' heigth='10px' width='100px'>
+        </a>".
+    "<div class='movieContentContainer'>
+        <h1 id='movieId".$data["id_filme"]."'>".$data["nm_filme"]."</h1>
+        <div class='movieContent'>
+            <p id='movieTime".$data["id_filme"]."'>Duração | ". $data["duracao"]." min</p>
+            <p>Gênero | ".convert($data["nm_genero"])."</p>
             <p>Áudio | ".$data["ds_idioma"]."</p>
         </div>
     </div>
@@ -169,9 +197,7 @@ function movieInfoSeatsChoice(){
          f.duracao,
          g.id_genero,
          g.nm_genero,
-         i.ds_idioma,
-         sa.nm_sala,
-         d.horario
+         i.ds_idioma
          FROM filme f
          INNER JOIN genero g
          ON f.id_genero = g.id_genero
@@ -179,15 +205,13 @@ function movieInfoSeatsChoice(){
          ON f.id_idioma = i.id_idioma
          INNER JOIN salas sa
          ON f.id_sala = sa.id_sala
-         INNER JOIN data d
-         ON f.id_data = d.id_horario
          WHERE f.id_filme ='$movieId'";
         $result = $conn->query($sql);
         $data = $result->fetch(PDO::FETCH_ASSOC);
 
         return "<h1 id='movieId".$data["id_filme"]."'>".$data["nm_filme"]."</h1>
                 <p id='movieTime".$data["id_filme"]."'>Duração: ". $data["duracao"]." min
-                <p>Gênero: ".convert($data)."</p>
+                <p>Gênero: ".convert($data["nm_genero"])."</p>
                 <p id='roomPick'></p>
                 <p id='roomTime'>Horario: </p>";
 }
@@ -210,6 +234,46 @@ function getRooms(){
                     <p>".$data["horario"]."</p>
                 </div>";
             
+    }
+}
+function search(){
+    $conn = connect();
+    $searchValue = filter_input(INPUT_POST, "searchMovie", FILTER_SANITIZE_ENCODED);
+    $converted = str_split($searchValue);
+    $columnName = "nm_filme";
+    $foundMovies = [];
+    $c = 0;
+    $sql = "SELECT f.id_filme,
+                    f.nm_filme,
+                    f.duracao,
+                    g.id_genero,
+                    g.nm_genero,
+                    i.ds_idioma
+                FROM filme f
+                INNER JOIN genero g
+                    ON f.id_genero = g.id_genero
+                INNER JOIN idioma i
+                        ON f.id_idioma = i.id_idioma ";
+
+    $initWhere = "WHERE $columnName LIKE '%$converted[0]%'";
+    $whereComands = "";
+
+    for ($i=0; $i < sizeof($converted) ; $i++) { 
+       $whereComands = $whereComands."AND ".$columnName." LIKE "."'%$converted[$i]%' ";   
+    }
+    $result = $conn->query(( $sql.$initWhere.$whereComands));
+    while($data = $result->fetch(PDO::FETCH_ASSOC)){
+        $foundMovies[$c] = $data["id_filme"];
+        $c++;
+    }
+
+    session_start();
+    $_SESSION["foundMovies"] = $foundMovies;  
+    if(isset($foundMovies[0])){
+        header("location:../public/foundMoviePage.php?search=$searchValue");
+        die();  
+    }else{
+        header("location:../public/foundMoviePage.php?found=n");
     }
 }
 ?>

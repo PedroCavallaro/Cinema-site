@@ -1,6 +1,6 @@
-import * as interfaces from "./interfaces.js"
+import * as i from "./interfaces.js"
 
-const movieModal: interfaces.modalItens = {
+const movieModal: i.modalItens = {
     movieName: document.querySelector(".movieContentContainer").children[0].innerHTML,
     seatsChose: document.querySelector(".seatsChose"),
     showSeats: document.querySelector(".seatsContainer"),
@@ -9,7 +9,7 @@ const movieModal: interfaces.modalItens = {
     ticketAmount: document.querySelector("#ticketAmount")
 }
 
-const mainItens: interfaces.mainPageItens = {
+const mainItens: i.mainPageItens = {
     imgAncor: document.querySelector("#imgAncor"),
     roomButton: document.querySelectorAll(".room"),
     movieImg: document. querySelector(".movieImg"),
@@ -17,15 +17,12 @@ const mainItens: interfaces.mainPageItens = {
     homeBAnchor: document.querySelector("#homeBAnchor")
 }
 const seatsLetter = [] = "ABCDEFGHIJK".split(''),
-    date = new Date(),
-    urlMp: URLSearchParams = new URLSearchParams(window.location.search),
-    usernameMp:string = urlMp.get("username")
+    date = new Date()
 let saveText = []
     
     
 window.addEventListener("load",async ()=>{
     // const  movieData = await search(movieModal.movieName)
-    mainItens.homeBAnchor.href = `index.php?username=${usernameMp}`
     mainItens.imgAncor.removeAttribute("href")
     createSeats(movieModal.seatsChose)
     mainItens.today.innerText = String(date.getDate()) +" / " + String(date.getMonth() + 1) 
@@ -33,7 +30,7 @@ window.addEventListener("load",async ()=>{
 })
 mainItens.roomButton.forEach((e)=>{
     e.addEventListener("click", ()=>{
-        const roomEle: interfaces.roomElements = {
+        const roomEle: i.roomElements = {
             roomTime:document.querySelector("#roomTime"),
             roomNodes:e.childNodes,
             roomPick: document.querySelector("#roomPick")
