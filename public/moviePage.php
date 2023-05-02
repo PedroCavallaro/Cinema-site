@@ -23,17 +23,28 @@ $movieId = $_COOKIE["movieId"];
                     <div>
                         <img id="moviePoster">
                         <div class="movieContentModal">
+                            <input id="closeModal" type="button" value="X">
+                            
                             <?php
                             
                                echo movieInfoSeatsChoice()
                             ?>
+                                <p id="ticketAmount">Assentos:</p>
+                            
                             <!-- <p id="movieName">asd</p>
                             <p id="duracao">asd</p> -->
-                            <p id="ticketAmount">Assentos:</p>
+                        </div>
+                        <div id="txtChoseseats">
+                            <h2>Escolha os assentos</h2>
                         </div>
                     </div>
                 </div>
                 <div class="seatsChose">
+                </div>
+                <div id="finishChoice">
+                    <a id="anchorFinsh" href="ticketType.php">
+                        <input type="button" id="finishButton" value="Finalizar">
+                    </a>
                 </div>
             </div>
        </div> 
@@ -60,7 +71,7 @@ $movieId = $_COOKIE["movieId"];
                 <?=getRooms()?>
             </div>
         </div>
-    </main>
+    </main>    
     <script type="module" src="dist/moviePage.js"></script>
 </body>
 </html>

@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Mulish");
+
 *{
+    font-family: "Mulish", "sans-serif";
     margin: 0;
     padding: 0;
     
@@ -35,7 +38,7 @@ header{
     background: linear-gradient(to right ,#000000, #4f2423, #790909, #000000);
     display: flex;
     align-items: center;
-    height: 100px;
+    height: 4rem;
 }
 .headerContainer{
     display: flex;

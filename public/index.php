@@ -24,7 +24,7 @@
                 
                echo "<form action='../src/searchMovie.php' method='post'>
                     <label for='searchMovie'>Pesquisar Filme</label><br>
-                    <input type='text' id='searchMovie' name='searchMovie' id='search'>
+                    <input type='text' id='searchMovie' name='searchMovie' id='searchInput'>
                     <input type='submit' id='searchButton' value='Pesquisar' >
                 </form>";
                 
