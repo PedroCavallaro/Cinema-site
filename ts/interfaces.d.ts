@@ -6,6 +6,8 @@ export interface modalItens {
     seatsMainContainer: HTMLDivElement,
     moviePoster: HTMLImageElement,
     ticketAmount:HTMLTitleElement,
+    closeModal:HTMLButtonElement,
+    finishButton: HTMLButtonElement
 }
 export interface mainPageItens{
     roomButton: NodeListOf<Element>,

@@ -1,5 +1,7 @@
 const card = document.querySelectorAll(".card");
 const urlIndex = new URLSearchParams(window.location.search);
+const searchButton = document.querySelector("#searchButton");
+const searchInput = document.querySelector("#searchInput");
 card.forEach((e) => {
     e.addEventListener("click", () => {
         const cookie = `movieId=${e.id}`;

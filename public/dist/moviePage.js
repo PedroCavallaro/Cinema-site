@@ -4,7 +4,9 @@ const movieModal = {
     showSeats: document.querySelector(".seatsContainer"),
     seatsMainContainer: document.querySelector(".seatsMainContainer"),
     moviePoster: document.querySelector("#moviePoster"),
-    ticketAmount: document.querySelector("#ticketAmount")
+    ticketAmount: document.querySelector("#ticketAmount"),
+    closeModal: document.querySelector("#closeModal"),
+    finishButton: document.querySelector("#finishButton")
 };
 const mainItens = {
     imgAncor: document.querySelector("#imgAncor"),
@@ -35,7 +37,7 @@ mainItens.roomButton.forEach((e) => {
         //h3
         roomEle.roomPick.innerHTML = roomEle.roomNodes[1].textContent;
         //p 
-        roomEle.roomTime.innerHTML += roomEle.roomNodes[3].textContent;
+        roomEle.roomTime.innerHTML = `Horário: ${roomEle.roomNodes[3].textContent}`;
         seatsList.forEach((e) => {
             e.addEventListener("click", () => {
                 if (!(e.classList.contains("selected"))) {
@@ -52,6 +54,27 @@ mainItens.roomButton.forEach((e) => {
             });
         });
     });
+    movieModal.closeModal.addEventListener("click", () => {
+        movieModal.showSeats.classList.remove("show");
+        movieModal.seatsMainContainer.classList.remove("show");
+    });
+});
+movieModal.finishButton.addEventListener("click", () => {
+    if (!(typeof saveText[0] === "undefined")) {
+        const movieInfo = [];
+        const elements = document.querySelectorAll(".modalInfo");
+        movieInfo.push(movieModal.moviePoster.src);
+        elements.forEach((e) => {
+            movieInfo.push(e.innerHTML);
+        });
+        movieInfo.push(saveText);
+        localStorage.setItem("info", JSON.stringify(movieInfo));
+    }
+    else {
+        const anchor = document.querySelector("#finishChoice > a");
+        anchor.href = "";
+        // movieModal.finishButton.disabled = true;
+    }
 });
 function createSeats(divMain) {
     for (let i = 0; i < seatsLetter.length; i++) {

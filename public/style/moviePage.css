@@ -148,8 +148,36 @@ body{
     width: 100%;
     height: 100%;
     top: 0;
+    background-color: rgb(34, 4, 4);
+}
+.movieInfo > div{
+    background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);  
+    height: 32%;
+}
+#finishChoice{
+    background: rgb(34, 4, 4);
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+#finishChoice > a{
+    width: 100%;
+}
+#finishChoice > a > input[type="button"]{
+    color: white;
+    background-color: rgb(34, 4, 4) ;
+    width:100%;
+    height: 100%;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5%;
+    cursor: pointer;
 }
 
+#finishChoice > a >  input[type="button"]:hover{
+    transition: 0.5s;
+    color:rgb(188, 188, 188);
+    border: 2px solid rgb(0, 0, 0);
+}
 .movieContentModal{
     position:absolute;
     color: white;
@@ -171,6 +199,28 @@ body{
 }
 .infoP{
     color: rgb(191, 65, 65);
+}
+#closeModal{
+    background-color: black;
+    color: white;
+    border: 2px solid rgb(126, 45, 45);
+    width: 6%;
+    height: 15%;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: -95px;
+}
+
+#closeModal:hover{
+    color: rgb(135, 19, 19);
+    border: 2px solid rgb(135, 19, 19);
+}
+#txtChoseseats{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 @keyframes showSeatsAni {
     from{

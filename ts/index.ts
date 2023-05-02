@@ -1,5 +1,7 @@
 const card:  NodeListOf<Element> = document.querySelectorAll(".card")
 const urlIndex: URLSearchParams = new URLSearchParams(window.location.search);
+const searchButton: HTMLButtonElement = document.querySelector("#searchButton") 
+const searchInput:HTMLInputElement = document.querySelector("#searchInput")
 
 card.forEach((e)=>{
     e.addEventListener("click", ()=>{
