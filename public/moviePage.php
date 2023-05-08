@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php
+
+include_once "../src/moPage.php";
 setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
 date_default_timezone_set('Europe/Lisbon');
-include_once "../src/data.php";
 $movieId = $_COOKIE["movieId"];
 
 ?>

@@ -1,7 +1,5 @@
 <?php
-
-
-    include_once "../src/data.php";
+    include_once "../src/tiType.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,13 +23,13 @@
         <img src="" class="moviePoster">
         <h1 id="movieName" class="info"></h1>
         <h2 id="movieDuration" class="info"></h2>
-        <h2>Duração:</h2>
+        <h2  class="txtInfo" >Duração:</h2>
         <h2 id="movieGender" class="info"></h2>
-        <h2>Gênero</h2>
+        <h2  class="txtInfo">Gênero</h2>
         <h2 id="movieRoom" class="info"></h2>
-        <h2>Sala:</h2>   
+        <h2 class="txtInfo" >Sala:</h2>   
         <h2 id="movieTime" class="info"></h2>
-        <h2>Horário: </h2>
+        <h2  class="txtInfo">Horário: </h2>
         <h2 id="movieTime" class="info"></h2>
     </div>
     <div class="ticketTypeChoice">

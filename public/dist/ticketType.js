@@ -20,15 +20,40 @@ window.addEventListener("load", () => {
     seats.innerHTML += arrSeats.join('');
 });
 actionButtons.forEach((e) => {
+    const arrSeats = lsInfo[lsInfo.length - 1];
     e.addEventListener("click", () => {
         const parent = e.parentElement;
         const node = parent.children[1];
         if (e.classList.contains("m")) {
-            node.value = Number(node.value) + 1;
+            console.log(e.id);
+            if (e.id === "moreButton") {
+                c += 1;
+                if (c === arrSeats.length) {
+                    document.querySelectorAll("#moreButton").forEach((b) => {
+                        b.setAttribute('disabled', 'true');
+                    });
+                }
+                node.value = Number(node.value) + 1;
+            }
         }
         else if (e.classList.contains("l")) {
-            if (!(node.value === "0" || node.value === " ")) {
-                node.value = Number(node.value) - 1;
+            if (e.id === "lessButton") {
+                document.querySelectorAll("#moreButton").forEach((b) => {
+                    b.removeAttribute('disabled');
+                });
+                if (!(node.value === "0" || node.value === "")) {
+                    document.querySelectorAll("#lessButton").forEach((b) => {
+                        b.removeAttribute('disabled');
+                    });
+                    node.value = Number(node.value) - 1;
+                    c -= 1;
+                }
+                else {
+                    e.setAttribute('disabled', '');
+                    document.querySelectorAll("#moreButton").forEach((b) => {
+                        b.removeAttribute('disabled');
+                    });
+                }
             }
         }
     });

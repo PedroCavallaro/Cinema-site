@@ -4,7 +4,7 @@ const lsInfo = JSON.parse(localStorage.getItem("info"))
 const seats: HTMLTitleElement = document.querySelector("#seats")
 const totalValue: HTMLLabelElement = document.querySelector("#totalValue")
 const actionButtons: NodeListOf<Element> = document.querySelectorAll(".actionButton")
-let c = 0
+let c: number = 0
 
 window.addEventListener("load", ()=>{
     
@@ -26,17 +26,41 @@ window.addEventListener("load", ()=>{
 
 
 actionButtons.forEach((e)=>{
+    const arrSeats = lsInfo[lsInfo.length -1]
+    
     e.addEventListener("click", ()=>{
-        const parent = e.parentElement
-        const node:any = parent.children[1]
-
+        const parent:Element = e.parentElement
+        const node:any = parent.children[1]        
+    
         if(e.classList.contains("m")){
-            node.value = Number(node.value) + 1
-  
+            console.log(e.id)
+            if(e.id === "moreButton"){
+                c+=1
+                if(c === arrSeats.length){
+                    document.querySelectorAll("#moreButton").forEach((b)=>{
+                       b.setAttribute('disabled', 'true') 
+                    }) 
+                } 
+                node.value = Number(node.value) +1
+            }
         }else if(e.classList.contains("l")){
-            if(!(node.value === "0" || node.value === " ")){
-                node.value = Number(node.value) - 1 
-                
+
+            if(e.id === "lessButton"){
+                document.querySelectorAll("#moreButton").forEach((b)=>{
+                    b.removeAttribute('disabled') 
+                 }) 
+                if(!(node.value === "0" || node.value === "")){
+                    document.querySelectorAll("#lessButton").forEach((b)=>{
+                        b.removeAttribute('disabled') 
+                     }) 
+                    node.value = Number(node.value) - 1 
+                    c-=1
+                }else{
+                    e.setAttribute('disabled', '')
+                    document.querySelectorAll("#moreButton").forEach((b)=>{
+                        b.removeAttribute('disabled') 
+                     }) 
+                }
             }
         }
     })

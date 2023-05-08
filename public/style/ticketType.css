@@ -1,9 +1,29 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
 *{
-    font-family: "Montserrat", "sans-serif"; 
+    font-family: "Raleway", "sans-serif"; 
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow: hidden;
+
+}
+@media(max-width: 800px){
+    .ticketValue{
+        width:10rem;
+    }
+    main{
+        width: 50dvw;
+        height: 50dvh;
+    }
+    h2{
+        font-size: 1rem;
+    }
+    h1{
+        font-size: 1.5rem;
+    }
+}
+html{
+    overflow: auto;
+    height: 50rem;
 }
 .moviePoster{
     height: 20rem;
@@ -15,6 +35,7 @@ header{
     align-items: center;
     background: linear-gradient(to right ,#000000, #4f2423, #790909, #000000);
     height: 4rem;
+    width: 100dvw;
 }
 header img:hover{
     width: 35px;
@@ -29,7 +50,8 @@ header > div > a > img{
     cursor: pointer;
 } 
 .asideInfo{
-    height: 100dvh;
+    overflow: hidden;
+    height: 50rem;
     box-shadow: 1px 0px 0px 0px rgba(0,0,0,0.75);
     font-size: 0.8rem;
 }
@@ -54,6 +76,8 @@ main {
     height: 100dvh;
     width: 100dvw;
 }
+
+
 .amount{
     display: flex;
     justify-content: center;
@@ -70,6 +94,10 @@ main {
     align-items: center;
 }
 .actionButton{
+    width: 2rem;
+    height: 2rem;
+}
+.bomboniere{
     width: 2rem;
     height: 2rem;
 }
@@ -94,9 +122,37 @@ input[type="button"].actionButton.value{
     border-radius: 0%;
     color: red;
 }
+
+input[type="button"].bomboniere.le{
+    border: 1px solid black;
+    border-top-left-radius: 45%;
+    border-bottom-left-radius: 45%;
+    background-color: black;
+    color:  red;
+}
+input[type="button"].bomboniere.mo{
+    border: 1px solid black;
+    border-top-right-radius: 45%;
+    border-bottom-right-radius: 45%;
+    background-color: black;
+    color:  red;
+}
+
+input[type="button"].bomboniere.value{
+    border: 1px solid red;
+    background-color: black;
+    border-radius: 0%;
+    color: red;
+}
+
+
+
 .snackBar{
+    overflow: hidden;
+    position: absolute;
+    width: 200rem;
     margin-top: 2rem;
-    height: 100dvh;
+    height: 90rem;
 }
 .snackInfo{
     display: flex;
@@ -112,4 +168,13 @@ input[type="button"].actionButton.value{
     display: flex;
     justify-content: center;
     align-items: center;
-}   
+} 
+
+.txtInfo{
+    color: rgb(191, 65, 65);
+}
+.snackValue{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
