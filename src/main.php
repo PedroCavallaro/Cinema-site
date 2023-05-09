@@ -7,10 +7,17 @@ session_start();
 
 $test = searchUser($username, $password);
 
-if($test["username"] == $username and $test["password"] == $password){
+if($test["username"] == "admin" and $test["password"] == "1234"){
+    
+    $_SESSION["logged"] = $username;
+    header("location:../admin/addMovie.php");
+
+}else if($test["username"] == $username and $test["password"] == $password){
+    
     $_SESSION["logged"] = $username;
     header("location:../public/index.php");
 }else{
+
     header("location:../public/loginPage.php");
 }
 

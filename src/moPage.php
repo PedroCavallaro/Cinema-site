@@ -7,15 +7,12 @@ function getRooms(){
     $conn = connect();
     $sql =  "SELECT  e.horario,
             s.nm_sala,
-            d.data,
             f.id_filme
             FROM escala e
             INNER JOIN filme f
             ON e.id_filme = f.id_filme
             INNER JOIN salas s
             ON e.id_sala = s.id_sala
-            INNER JOIN data d
-            ON d.id_data = e.id_data
             WHERE f.id_filme = $movieId
             ORDER BY s.nm_sala ASC";
 
@@ -46,8 +43,6 @@ function movieInfoSeatsChoice(){
          ON f.id_genero = g.id_genero
          INNER JOIN idioma i
          ON f.id_idioma = i.id_idioma
-         INNER JOIN salas sa
-         ON f.id_sala = sa.id_sala
          WHERE f.id_filme ='$movieId'";
         $result = $conn->query($sql);
         $data = $result->fetch(PDO::FETCH_ASSOC);
@@ -64,22 +59,18 @@ function renderMovie($movieId){
     $sql =  "SELECT 
          f.id_filme,
          f.nm_filme,
+         f.descricao,
          f.duracao,
          g.id_genero,
          g.nm_genero,
-         i.ds_idioma,
-         sa.nm_sala,
-         de.descricao
+         i.ds_idioma
          FROM filme f
          INNER JOIN genero g
          ON f.id_genero = g.id_genero
          INNER JOIN idioma i
          ON f.id_idioma = i.id_idioma
-         INNER JOIN salas sa
-         ON f.id_sala = sa.id_sala
-         INNER JOIN descricao de
-         ON f.id_descricao = de.id_descricao
          WHERE f.id_filme ='$movieId'";
+
         $result = $conn->query($sql);
         $data = $result->fetch(PDO::FETCH_ASSOC);
         echo "<div class='card' id='".$data["id_filme"]."'>

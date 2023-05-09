@@ -137,7 +137,72 @@ function renderCard($data){
 </div>";
 }
 
+function options(){
+    $conn = connect();
+    $sql = 'SELECT id_genero,
+                    nm_genero
+            FROM genero';
+    $html = "";
+    $result = $conn-> query($sql);
+            
+    while($data = $result -> fetch(PDO::FETCH_ASSOC)){
+        $html = $html."<option value='".$data['id_genero']."'>".$data['nm_genero']."</option>";
+    }
+    return $html;
+}
+function optionsLanguage(){
+    $conn = connect();
+    $sql = 'SELECT id_idioma,
+                    ds_idioma
+            FROM idioma';
+    $html = "";
+    $result = $conn-> query($sql);
+            
+    while($data = $result -> fetch(PDO::FETCH_ASSOC)){
+        $html = $html."<option value='".$data['id_idioma']."'>".$data['ds_idioma']."</option>";
+    }
+    return $html;
+}
 
+function optionsAudio(){
+    $conn = connect();
+    $sql = 'SELECT id_audio,
+                    ds_audio
+            FROM audio';
+    $html = "";
+    $result = $conn-> query($sql);
+            
+    while($data = $result -> fetch(PDO::FETCH_ASSOC)){
+        $html = $html."<option value='".$data['id_audio']."'>".$data['ds_audio']."</option>";
+    }
+    return $html;
+}
 
+function roomOptions(){
+    $conn = connect();
+    $sql = 'SELECT id_sala,
+                    nm_sala
+            FROM salas';
+    $html = "";
+    $result = $conn-> query($sql);
+            
+    while($data = $result -> fetch(PDO::FETCH_ASSOC)){
+        $html = $html."<option value='".$data['id_sala']."'>".$data['nm_sala']."</option>";
+    }
+    return $html;
+}
+function parentalrating(){
+    $conn = connect();
+    $sql = 'SELECT id_classificacao,
+                    ds_classificacao
+            FROM classificacao';
+    $html = "";
+    $result = $conn-> query($sql);
+            
+    while($data = $result -> fetch(PDO::FETCH_ASSOC)){
+        $html = $html."<option value='".$data['id_classificacao']."'>".$data['ds_classificacao']." anos</option>";
+    }
+    return $html;
+}
 ?>
 

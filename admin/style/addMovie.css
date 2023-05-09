@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway";
+}
+
+ul{
+    width: 400px;
+    background-color: rgb(73, 22, 22);
+    color: white;
+    z-index: 999;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+li{
+    height: 3.2rem;
+    margin:1px;
+    object-fit: cover;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+li > img{
+    margin-left: 3px;
+    border-radius: 20%;
+    height:3rem;
+    width: 3rem;
+    
+}
+header{
+    background: linear-gradient(to right ,#000000, #4f2423, #790909, #000000);
+    display: flex;
+    justify-content: space-between;
+    
+    height: 4rem;
+    
+}
+#logo{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    filter: contrast(5%);
+}
+
+#logo:hover{
+    width: 35px;
+    height: 35px;
+    transition: 0.4s ease-in-out;  
+  
+}
+header > div > label{
+    color: white;
+}
+header >  div > input[type='text']{
+    border: 2px solid red;
+    height: 20px;
+    border-radius: 15px;
+    font-size: 15px;
+    padding-left: 5px;
+    outline: 0;
+    width: 400px;
+    background-color: #2f2828;
+    color: red;
+}
+header > div > input:focus{
+    border: 2px solid red;
+    height: 25px;
+    background-color: white;
+    transition: 0.2s;
+    color: black;
+}
+header > div > input:hover{
+    border: 2px solid red;
+    height: 25px;
+    background-color: white;
+    transition: 0.5ms ease-in-out;
+    color: black;
+}
+header >  div > input[type="button"]{
+    all: unset;
+    border: 2px solid red;
+    background-color: #2f2828;
+    border-radius: 15px;
+    height: 25px;
+    width: 70px;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+    
+}
+
+input[type="text"]{
+    font-size: 15px;
+    height: 2rem;
+}
+select{
+    height: 2rem;
+}
+input[type="submit"]{
+    height: 2rem;
+    width: 6rem;
+    border: 2px solid red;
+    background-color: #2f2828;
+    color: white;
+}
+body > div{
+    display: flex;
+    justify-content: space-between;
+}
+#duration{
+    width: 5rem;
+}
+.info-container{
+    width: 20rem;   
+}
+#list{
+    display: none;
+    
+}
+#list.show{
+    display: flex;
+    position: absolute;
+}
+#tempImg{
+    height: 31rem;
+    width: 20rem;
+}
+.main-container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+}
+.info-container{
+    display: flex;
+    flex-direction: column;
+}
+.date-contanier{
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+.desc-container{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.desc-container > textarea{
+    z-index:2;
+    position: absolute;
+}
+.subButton{
+    z-index: 2;
+    position: relative;
+    margin-top:0.5rem;
+    left: 5.5rem;
+}

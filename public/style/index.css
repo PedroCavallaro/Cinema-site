@@ -20,11 +20,9 @@ p{
     color: white;
 }
 .movies{
+    position: absolute;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 20px;
-    height: 500px;
+    gap:5vmin;
 }
 
 body{
@@ -32,6 +30,7 @@ body{
     background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 header{
