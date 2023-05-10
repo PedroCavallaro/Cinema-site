@@ -16,20 +16,27 @@
             </a>
         </div>
     </header>
+    <div id="adminTitle">
+        <h1>Página de adminstrador</h1>
+    </div>
     <div class="actions-container">
         <div>
             <a href="./addMovie.php">
-                <img src="" alt="">
+                <img src="../public/img/addButton.png" alt="">
                 <h1>Adicionar Filme</h1>
             </a>
         </div>
         <div>
-            <img src="" alt="">
-            <h1>Ver filmes cadastrados</h1>
+            <a href="">
+                <img src="../public/img/list.png" alt="">
+                <h1>Ver filmes cadastrados</h1>
+            </a>
         </div>
         <div>
-        <img src="" alt="">
-            <h1>Editar/adicionar escalas</h1>
+            <a href="">
+                <img src="../public/img/schedule.png" alt="">
+                <h1>Editar/adicionar escalas</h1>
+            </a>
         </div>
     </div>
 </body>

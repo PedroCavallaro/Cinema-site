@@ -1,5 +1,4 @@
-import { search } from "./index.js";
-const searchButton = document.querySelector("#search"), searchMovie = document.querySelector("#searchMovie"), list = document.querySelector("#list"), info = document.querySelectorAll(".info");
+const searchButton = document.querySelector("#search"), searchMovie = document.querySelector("#searchMovie"), list = document.querySelector("#list"), movieInfoArr = document.querySelectorAll(".info");
 let foundMovies;
 searchMovie.addEventListener("keyup", async () => {
     list.innerHTML = "";
@@ -22,12 +21,17 @@ searchMovie.addEventListener("keyup", async () => {
                 imgPath: `https://image.tmdb.org/t/p/original${results[i].poster_path}`
             };
             console.log(results[i]);
-            info[0].src = movie.imgPath;
-            info[1].value = movie.name;
-            info[2].textContent = movie.overview;
+            movieInfoArr[0].src = movie.imgPath;
+            movieInfoArr[1].value = movie.name;
+            movieInfoArr[2].textContent = movie.overview;
             list.classList.remove("show");
         });
     }
     list.appendChild(ul);
     list.classList.add("show");
 });
+async function search(movieName) {
+    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=b11c40b0b36c592e67882ea4a2da0100&query=${movieName}&language=pt-BR&page=1&include_adult=false`)
+        .then((res) => res.json());
+    return response;
+}

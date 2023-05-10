@@ -89,20 +89,15 @@ function renderFoundMovie($movieId){
          f.id_filme,
          f.nm_filme,
          f.duracao,
+         f.descricao,
          g.id_genero,
          g.nm_genero,
-         i.ds_idioma,
-         sa.nm_sala,
-         de.descricao
+         i.ds_idioma
          FROM filme f
          INNER JOIN genero g
          ON f.id_genero = g.id_genero
          INNER JOIN idioma i
          ON f.id_idioma = i.id_idioma
-         INNER JOIN salas sa
-         ON f.id_sala = sa.id_sala
-         INNER JOIN descricao de
-         ON f.id_descricao = de.id_descricao
          WHERE f.id_filme ='$movieId'";
         $result = $conn->query($sql);
         $data = $result->fetch(PDO::FETCH_ASSOC);
