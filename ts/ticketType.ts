@@ -2,6 +2,7 @@ const info: NodeListOf<Element> = document.querySelectorAll(".info")
 const moviePoster: HTMLImageElement = document.querySelector(".moviePoster")
 const lsInfo = JSON.parse(localStorage.getItem("info"))
 const seats: HTMLTitleElement = document.querySelector("#seats")
+<<<<<<< HEAD
 const totalValue: HTMLLabelElement = document.querySelector("#totalValue")
 const actionButtons: NodeListOf<Element> = document.querySelectorAll(".actionButton")
 let c: number = 0
@@ -64,4 +65,14 @@ actionButtons.forEach((e)=>{
             }
         }
     })
+=======
+let c = 0
+
+window.addEventListener("load", ()=>{
+    moviePoster.src = lsInfo[0]
+    for(let i = 1; i < lsInfo.length -2; i++) {
+        info[i].innerHTML = lsInfo[i]
+    }
+
+>>>>>>> cea9c150b8905e9286bf56f41e404fada529fffb
 })

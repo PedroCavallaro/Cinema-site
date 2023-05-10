@@ -2,9 +2,12 @@ const card:  NodeListOf<Element> = document.querySelectorAll(".card")
 const urlIndex: URLSearchParams = new URLSearchParams(window.location.search);
 const searchButton: HTMLButtonElement = document.querySelector("#searchButton") 
 const searchInput:HTMLInputElement = document.querySelector("#searchInput")
+<<<<<<< HEAD
 const movies:HTMLDivElement = document.querySelector(".movies")
 let c: number = 0
 let test:boolean = false
+=======
+>>>>>>> cea9c150b8905e9286bf56f41e404fada529fffb
 
 card.forEach((e)=>{
     e.addEventListener("click", ()=>{
