@@ -27,7 +27,7 @@
             </a>
         </div>
         <div>
-            <a href="">
+            <a href="./readMovies.php">
                 <img src="../public/img/list.png" alt="">
                 <h1>Ver filmes cadastrados</h1>
             </a>

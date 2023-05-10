@@ -61,6 +61,7 @@ function renderMovie($movieId){
          f.nm_filme,
          f.descricao,
          f.duracao,
+         f.img_path,
          g.id_genero,
          g.nm_genero,
          i.ds_idioma
@@ -75,13 +76,13 @@ function renderMovie($movieId){
         $data = $result->fetch(PDO::FETCH_ASSOC);
         echo "<div class='card' id='".$data["id_filme"]."'>
           <a id='imgAncor' href='moviePage.php'> 
-        <img src='./img/filme_id".$data["id_filme"].".jpg'"." class='movieImg' id='movie".$data["id_filme"]."' heigth='10px' width='100px'>
+        <img src='".$data["img_path"]."'"." class='movieImg' id='movie".$data["id_filme"]."' heigth='10px' width='100px'>
         </a>".
     "<div class='movieContentContainer'>
         <h1 id='movieId".$data["id_filme"]."'>".$data["nm_filme"]."</h1>
         <div class='movieContent'>
             <p class='infoP' id='sinopse'>SINÓPSE:</p>
-            <p> ".convert($data["descricao"])."</p>
+            <p> ".$data["descricao"]."</p>
             <p id='movieTime".$data["id_filme"]."' class='infoP'>DURAÇÂO:</p>
             <p> ". $data["duracao"]." min
             <p class='infoP'>GÊNERO:</p>

@@ -1,7 +1,6 @@
 const info = document.querySelectorAll(".info");
 const moviePoster = document.querySelector(".moviePoster");
 const lsInfo = JSON.parse(localStorage.getItem("info"));
-<<<<<<< HEAD
 const seats = document.querySelector("#seats");
 const totalValue = document.querySelector("#totalValue");
 const actionButtons = document.querySelectorAll(".actionButton");
@@ -58,12 +57,4 @@ actionButtons.forEach((e) => {
             }
         }
     });
-=======
-let c = 0;
-window.addEventListener("load", () => {
-    moviePoster.src = lsInfo[0];
-    for (let i = 1; i < lsInfo.length - 2; i++) {
-        info[i].innerHTML = lsInfo[i];
-    }
->>>>>>> cea9c150b8905e9286bf56f41e404fada529fffb
 });

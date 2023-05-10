@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 include_once "./data.php";
 header('Content-type: text/html; charset=utf-8');
 setlocale(LC_ALL,'pt_BR.UTF8');
@@ -15,8 +18,7 @@ $txtRoom = $_POST["txtRoom"];
 $time = $_POST["time"];
 $txtRelease = $_POST["txtRelease"];
 $txtPr = $_POST["txtPr"];
-
-echo $txtDesc;
+$img = $_POST["fileImg"];
 
 
 $bd = connect();
@@ -24,9 +26,12 @@ $bd = connect();
 $sql = "INSERT INTO `filme`(`nm_filme`,
                 `id_genero`, `id_idioma`, `duracao`
                 ,`id_classificacao`, `descricao`,
-                 `id_audio`, `dt_lancamento`) 
-                    VALUES ('".utf8_decode($movieName)."','".$txtGender."','".$txtIdioma."','".$duration."',
-                    '".$txtPr."','".utf8_decode($txtDesc)."','".$txtAudio."','".$txtRelease."')";
+                `id_audio`, `dt_lancamento`, `img_path`) 
+                    VALUES ('".$movieName."','".$txtGender."','".$txtIdioma."','".$duration."',
+                    '".$txtPr."','".$txtDesc."','".$txtAudio."','".$txtRelease."','".$img."')";
+
+
+
 
 $bd->beginTransaction();
 $lines = $bd->exec($sql);

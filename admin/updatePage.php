@@ -13,29 +13,20 @@ ini_set('default_charset','UTF-8');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/style/common.css">
     <link rel="stylesheet" href="./style/addMovie.css">
+    <link rel="stylesheet" href="../public/style/common.css">
     <title>Adicionar Filme</title>
 </head>
-<header>
-    <div>
-        <a href="./selectAction.php">
-            <img src="../public/img/homeImg.png" id="logo"alt="">
-        </a>
-    </div>
-    <div class="searchContainer">
-        <label for="searchMovie">Pesquisar filme:</label><br>
-        <input type="text" id="searchMovie">
-        <input type="button" id="search" value="Pesquisar"><br>
-        <div id="list">
-            <div id="list"></div>
-        </div>
-    </div>
-    <div></div>
-</header>
 <body>
+<header>
+        <div>
+            <a id="homeBAnchor"href="index.php">
+                <img id="homeButton" src="../public/img/homeImg.png">
+            </a>
+        </div>
+    </header>
     <div>
-        <form action="../src/addMovie.php" method="post" enctype="multipart/form-data">
+        <form action="../src/update.php" method="post" enctype="multipart/form-data">
             <div class="main-container">
                 <div>
                     <img src="" id="tempImg" name="movieImg" class="info">
@@ -69,25 +60,7 @@ ini_set('default_charset','UTF-8');
                         <textarea name="txtDesc" cols="70" rows="10" class="info"></textarea>
                     </div>
                 </div>
-                <div class="date-contanier">
-                    <h1>Gerar escala</h1>
-                    <label for="realease">Data de lançamento</label>
-                    <input type="text" class="info" name="txtRelease">
-                    <label>Periodo de exibição</label>
-                    <input type="date">
-                        <label>Horario:</label>
-                        <input type="text" placeholder="00:00" name="time">
-                        <label>Sala:</label>
-                        <select name="txtRoom">
-                            <?=roomOptions()?>
-                        </select>
-                        
-                    <div class="subButton">
-                        <input type="submit" value="Cadastrar">
-                    </div>
-                    </div>
                 </div>
-                
             </form>
         </div>
     <script type="module" src="../public/dist/addMovie.js"></script>
