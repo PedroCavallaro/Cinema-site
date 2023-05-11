@@ -5,7 +5,8 @@ include_once "./data.php";
 session_start();
 function search(){
     $conn = connect();
-    $searchValue = filter_input(INPUT_POST, "searchMovie", FILTER_SANITIZE_ENCODED);
+    // $searchValue = filter_input(INPUT_POST, "searchMovie", FILTER_SANITIZE_ENCODED);
+    $searchValue = "john";
     $converted = str_split($searchValue);
     $columnName = "nm_filme";
     $foundMovies = [];
@@ -20,15 +21,9 @@ function search(){
                 INNER JOIN genero g
                     ON f.id_genero = g.id_genero
                 INNER JOIN idioma i
-                        ON f.id_idioma = i.id_idioma ";
-
-    $initWhere = "WHERE $columnName LIKE '%$converted[0]%'";
-    $whereComands = "";
-
-    for ($i=0; $i < sizeof($converted) ; $i++) { 
-       $whereComands = $whereComands."AND ".$columnName." LIKE "."'%$converted[$i]%' ";   
-    }
-    $result = $conn->query(( $sql.$initWhere.$whereComands));
+                        ON f.id_idioma = i.id_idioma 
+                WHERE $columnName LIKE '$searchValue%'";
+    $result = $conn->query(( $sql));
     
     while($data = $result->fetch(PDO::FETCH_ASSOC)){
         $foundMovies[$c] = $data["id_filme"];

@@ -223,7 +223,8 @@ function renderUpdateMovieInfo($cod){
                     INNER JOIN genero g
                     ON f.id_genero = g.id_genero
                     INNER JOIN audio a
-                    ON f.id_audio = a.id_audio";
+                    ON f.id_audio = a.id_audio
+                    WHERE f.id_filme = $cod";
 
     $result = $bd->query($sql);
 

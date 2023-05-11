@@ -3,6 +3,7 @@
     padding: 0;
     font-family: "Raleway";
 }
+
 body{
     background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);
 }
@@ -10,6 +11,71 @@ body{
     object-fit: cover;
     height: 100%;
     width: 100%;
+}
+.cancel{
+    position: relative;
+    bottom: -3rem;
+    right: -17rem;
+}
+
+.modal-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    /* z-index: -1; */
+}
+
+.modal-container.show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.modal.show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+    width: 50%;
+    background-color:rgb(94, 35, 35);  
+    color: white;
+    row-gap: 2rem;
+    border: 2px solid black; 
+}
+.modal > form{
+    display: none;
+
+}
+.modal > div > input{
+    height: 2rem;
+    width: 6rem;
+    border: 2px solid red;
+    background-color: #2f2828;
+    color: white;
+    cursor: pointer;
+}
+.modal > form > div > input{
+  
+    height: 2rem;
+    width: 6rem;
+    border: 2px solid red;
+    background-color: #2f2828;
+    color: white;
+    cursor: pointer;
+}
+.modal > form.show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 0.5rem;
+
 }
 a{
     text-decoration: none;
@@ -33,7 +99,7 @@ table {
 }
 th{
     border: none;
-    background-color:#6b2929;
+    background-color:rgb(94, 35, 35); 
     height: 4rem;
     cursor: default;
 }

@@ -38,6 +38,6 @@ $cod =$_GET["cod"];
                 </div>
             </form>
         </div>
-    <script type="module" src="../public/dist/addMovie.js"></script>
+        <script src="../public/dist/update.js"></script>
 </body>
 </html>

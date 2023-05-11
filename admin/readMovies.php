@@ -15,6 +15,25 @@ include_once "../src/readMovies.php";
     <title>Lista de filmes</title>
 </head>
 <body>
+    <div class="modal-container">
+        <div class="modal">
+            <h1>Deseja realmente excluir o filme?</h1>
+            <div>
+                <input type="button" class="yesButton" value="Sim">
+                <input type="button" class="close" value="Não">
+            </div>
+            <form action="../src/delete.php">
+                <label for="password">Digite a senha de administrador:</label>
+                <input type="password" name="password">
+                <div>
+                    <input type="submit" value="Exclur">
+                </div>
+            </form>
+            <div class="cancel">
+                <input class="close" type="button" value="Cancelar">
+            </div>    
+        </div>
+    </div>
 <header>
         <div>
             <a id="homeBAnchor"href="./selectAction.php">
