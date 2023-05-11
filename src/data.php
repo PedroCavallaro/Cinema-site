@@ -202,5 +202,77 @@ function parentalrating(){
     }
     return $html;
 }
+function renderUpdateMovieInfo($cod){
+    $bd = connect();
+    $sql = "SELECT f.nm_filme,
+                    f.duracao,
+                    f.descricao,
+                    c.ds_classificacao,
+                    c.id_classificacao,
+                    i.id_idioma,
+                    i.ds_idioma,
+                    g.id_genero,
+                    g.nm_genero,
+                    a.id_audio,
+                    a.ds_audio
+                    FROM filme f
+                    INNER JOIN classificacao c
+                    ON f.id_classificacao = c.id_classificacao
+                    INNER JOIN idioma i
+                    ON f.id_idioma = i.id_idioma
+                    INNER JOIN genero g
+                    ON f.id_genero = g.id_genero
+                    INNER JOIN audio a
+                    ON f.id_audio = a.id_audio";
+
+    $result = $bd->query($sql);
+
+    $data = $result->fetch(PDO::FETCH_ASSOC);
+
+    $option1 = options();
+    $option2 = optionsLanguage();
+    $option3 = optionsAudio();
+    $option4 = parentalrating();
+
+    echo "  <div class='info-container'>
+    <label for='movieName'>Nome do filme:</label>
+    <input type='text' id='movieName' class='info name ='movieName' value='".$data["nm_filme"]."'>
+    <div>
+        <label for='duration'>Duração:</label><br>
+        <input type='text' id='duration' class='info' name ='duration' value='".$data["duracao"]."'>
+    </div>
+    <label for=''>Genero do Filme:</label>
+    <select name='txtGender'>
+        <option value='".$data["id_genero"]."'>".utf8_encode($data["nm_genero"])."</option>".
+        utf8_encode($option1)."
+    </select>
+    <label for=''>Idioma:</label>
+    <select name='txtIdioma'>    
+        <option value='".$data["id_idioma"]."'>".utf8_encode($data["ds_idioma"])."</option>"
+        . utf8_encode($option2)."
+    </select>
+    <label for=''>Audio:</label>
+    <select name='txtAudio'>    
+        <option value='".$data["id_audio"]."'>".$data["ds_audio"]."</option>"
+        .$option3."
+    </select>
+    <label>Classificação:</label>
+        <select name='txtPr'>
+        <option value='".$data["id_classificacao"]."'>".$data["ds_classificacao"]."</option>"
+        .$option4."
+        </select>
+    <div class='subButton' id='updateButton'>
+        <input type='submit' value='Atualizar'>
+    </div>
+    <label>Descrição:</label>
+    <div class='desc-container' name='txtDesc'>
+        <textarea name='txtDesc' cols='70' rows='10' class='info'>
+        ".$data["descricao"]."</textarea>
+    </div>
+</div>";
+
+
+
+}
 ?>
 

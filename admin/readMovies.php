@@ -17,12 +17,12 @@ include_once "../src/readMovies.php";
 <body>
 <header>
         <div>
-            <a id="homeBAnchor"href="index.php">
-                <img id="homeButton" src="../public/img/homeImg.png">
+            <a id="homeBAnchor"href="./selectAction.php">
+                <img id="homeButton" src="../public/img/leftArrow.png">
             </a>
         </div>
     </header>
-    <table border="1">
+    <table>
         <thead>
             <th>Poster</th>
             <th>Cód Filme</th>
@@ -34,5 +34,6 @@ include_once "../src/readMovies.php";
             <?=renderList()?>   
         </tbody>
     </table>
+    <script src="../public/dist/readMovies.js"></script>
 </body>
 </html>

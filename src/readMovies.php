@@ -21,12 +21,12 @@ function renderList(){
               <td>".$data["nm_filme"]."</td>  
               <td>".$data["ds_classificacao"]."</td>
               <td>
-                <a href='updatePage.php?cod=".$data["id_filme"]."'>Editar</a>
+                <a class='updateButton' href='updatePage.php?cod=".$data["id_filme"]."'>Editar</a>
                 <a href='delete.php?cod=".$data["id_filme"]."'>Excluir</a>
                </td>
               </tr>     ";
 
     }
 
-
+//href='updatePage.php?cod=".$data["id_filme"]."'
 }

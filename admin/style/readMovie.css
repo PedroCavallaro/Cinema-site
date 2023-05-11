@@ -3,11 +3,68 @@
     padding: 0;
     font-family: "Raleway";
 }
+body{
+    background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);
+}
 .imgList{
-    height: 5rem;
-    width: 4rem;
-    object-fit: contain;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a:hover{
+    color: black;
 }
 td{
     text-align: center;
+}
+table {
+    border: 2px solid black;
+    color: white;
+    margin-top: 5px;
+    border-collapse:collapse;
+    width: 100%;
+    background-color: #fff;
+}
+th{
+    border: none;
+    background-color:#6b2929;
+    height: 4rem;
+    cursor: default;
+}
+th:hover{
+    background-color:black;
+    transition: 1s ease;
+}
+table tr:nth-child(odd){
+    border-collapse: collapse;
+    background-color: rgb(35, 44, 50);
+}
+
+table tr:nth-child(even){
+    border-collapse: collapse;
+    background-color:rgb(94, 35, 35); 
+}
+td{
+    height: 6rem;
+    cursor: default;
+}
+tbody:last-child{
+    background-color: red;
+}
+
+table tr:nth-child(odd):hover{
+    border-collapse: collapse;
+    background-color: rgb(28, 33, 37);
+    transition: 1s ease;
+}
+table tr:nth-child(even):hover{
+    border-collapse: collapse;
+    background-color: rgb(64, 25, 25);
+    transition: 1s ease;
 }

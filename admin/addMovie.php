@@ -6,6 +6,7 @@ setlocale(LC_ALL,'pt_BR.UTF8');
 mb_internal_encoding('UTF8'); 
 mb_regex_encoding('UTF8');
 ini_set('default_charset','UTF-8');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,7 +21,7 @@ ini_set('default_charset','UTF-8');
 <header>
     <div>
         <a href="./selectAction.php">
-            <img src="../public/img/homeImg.png" id="logo"alt="">
+            <img src="../public/img/leftArrow.png" id="logo"alt="">
         </a>
     </div>
     <div class="searchContainer">
@@ -64,7 +65,7 @@ ini_set('default_charset','UTF-8');
                         <select name="txtPr">
                             <?=parentalrating()?>
                         </select>
-                    <label>Descirção:</label>
+                    <label>Descrição:</label>
                     <div class="desc-container" name="txtDesc">
                         <textarea name="txtDesc" cols="70" rows="10" class="info"></textarea>
                     </div>
