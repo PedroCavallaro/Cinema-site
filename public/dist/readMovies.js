@@ -1,11 +1,13 @@
-const delet = document.querySelectorAll(".delete"), formModal = document.querySelector(".modal > form"), yesButton = document.querySelector(".yesButton"), modalContainer = document.querySelector(".modal-container"), modal = document.querySelector(".modal"), closeModal = document.querySelectorAll(".close"), updateButton = document.querySelectorAll(".updateButton"), imgList = document.querySelectorAll(".imgList");
-let count = 0;
+const delet = document.querySelectorAll(".delete"), formModal = document.querySelector(".modal > form"), yesButton = document.querySelector(".yesButton"), modalContainer = document.querySelector(".modal-container"), modal = document.querySelector(".modal"), closeModal = document.querySelectorAll(".close"), updateButton = document.querySelectorAll(".updateButton"), imgList = document.querySelectorAll(".imgList"), delButton = document.querySelector("#delButton"), delForm = document.querySelector("#delForm");
 delet.forEach((e) => {
     e.addEventListener("click", () => {
         modalContainer.classList.add("show");
         modal.classList.add("show");
         yesButton.addEventListener("click", () => {
             formModal.classList.add("show");
+        });
+        delButton.addEventListener("click", () => {
+            delForm.action = "../src/delete.php?" + e.dataset.href;
         });
     });
 });

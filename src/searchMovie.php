@@ -5,8 +5,7 @@ include_once "./data.php";
 session_start();
 function search(){
     $conn = connect();
-    // $searchValue = filter_input(INPUT_POST, "searchMovie", FILTER_SANITIZE_ENCODED);
-    $searchValue = "john";
+    $searchValue = filter_input(INPUT_POST, "searchMovie", FILTER_SANITIZE_ENCODED);
     $converted = str_split($searchValue);
     $columnName = "nm_filme";
     $foundMovies = [];

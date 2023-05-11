@@ -22,11 +22,11 @@ include_once "../src/readMovies.php";
                 <input type="button" class="yesButton" value="Sim">
                 <input type="button" class="close" value="Não">
             </div>
-            <form action="../src/delete.php">
+            <form id="delForm" method="POST">
                 <label for="password">Digite a senha de administrador:</label>
                 <input type="password" name="password">
                 <div>
-                    <input type="submit" value="Exclur">
+                    <input type="submit" id="delButton"value="Exclur">
                 </div>
             </form>
             <div class="cancel">

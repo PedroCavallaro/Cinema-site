@@ -1,14 +1,13 @@
-const delet = document.querySelectorAll(".delete"),
-formModal:HTMLFormElement = document.querySelector(".modal > form"),
-yesButton = document.querySelector(".yesButton"),
-modalContainer:HTMLDivElement = document.querySelector(".modal-container"),
-modal:HTMLDivElement = document.querySelector(".modal"),
-closeModal = document.querySelectorAll(".close"),
-updateButton = document.querySelectorAll(".updateButton"),
-imgList:any = document.querySelectorAll(".imgList")
-
-let count:number = 0
-
+const delet:any = document.querySelectorAll(".delete"),
+    formModal:HTMLFormElement = document.querySelector(".modal > form"),
+    yesButton = document.querySelector(".yesButton"),
+    modalContainer:HTMLDivElement = document.querySelector(".modal-container"),
+    modal:HTMLDivElement = document.querySelector(".modal"),
+    closeModal = document.querySelectorAll(".close"),
+    updateButton = document.querySelectorAll(".updateButton"),
+    imgList:any = document.querySelectorAll(".imgList"),
+    delButton: HTMLInputElement = document.querySelector("#delButton"),
+    delForm:HTMLFormElement = document.querySelector("#delForm")
 
 delet.forEach((e)=>{
     e.addEventListener("click", ()=>{
@@ -16,6 +15,9 @@ delet.forEach((e)=>{
         modal.classList.add("show")
         yesButton.addEventListener("click", ()=>{
                 formModal.classList.add("show")  
+        })
+        delButton.addEventListener("click", ()=>{
+            delForm.action = "../src/delete.php?"+ e.dataset.href
         })
     })
 
@@ -39,3 +41,4 @@ closeModal.forEach((e)=>{
             modal.classList.remove("show")
     })
 })
+
