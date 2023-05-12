@@ -89,13 +89,16 @@ input:hover{
     position: relative;
 }
 #amount.show{
+    width: 0.7rem;
+    height: 0.8rem;
+    text-align: center;
+    color: white;
     position: absolute;
     background-color: red;
     border: 0px solid black;
     border-radius: 50%;
     right: -4px;
     font-size: 10px;
-    color:black;
     font-weight: bold; 
 }
 .username{

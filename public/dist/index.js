@@ -2,8 +2,15 @@ const card = document.querySelectorAll(".card");
 const urlIndex = new URLSearchParams(window.location.search);
 const searchButton = document.querySelector("#searchButton");
 const searchInput = document.querySelector("#searchInput");
-const movies = document.querySelector(".movies");
+const movies = document.querySelector(".movies"), amount = document.querySelector("#amount");
 let c = 0;
+window.addEventListener('load', () => {
+    if (localStorage.getItem("request")) {
+        const req = JSON.parse(localStorage.getItem("request"));
+        amount.classList.toggle("show");
+        amount.innerText = "1";
+    }
+});
 card.forEach((e) => {
     e.addEventListener("click", () => {
         const cookie = `movieId=${e.id}`;

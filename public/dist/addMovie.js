@@ -1,11 +1,12 @@
 const searchButton = document.querySelector("#search"), searchMovie = document.querySelector("#searchMovie"), list = document.querySelector("#list"), movieInfoArr = document.querySelectorAll(".info"), fileImg = document.querySelector("#fileImg");
 let foundMovies;
+const ul = document.createElement("ul");
 searchMovie.addEventListener("keyup", async () => {
     list.innerHTML = "";
-    foundMovies = await search(searchMovie.value);
+    const foundMovies = await search(searchMovie.value);
     let results;
     ({ results } = foundMovies);
-    const ul = document.createElement("ul");
+    ul.innerHTML = "";
     for (let i = 0; i < 7; i++) {
         const img = document.createElement("img");
         const li = document.createElement("li");
@@ -16,21 +17,21 @@ searchMovie.addEventListener("keyup", async () => {
         ul.appendChild(li);
         li.addEventListener("click", async () => {
             const details = await getDetails(results[i].id);
-            console.log(details);
             const movie = {
-                name: details.title,
+                title: details.title,
                 overview: details.overview,
-                imgPath: `https://image.tmdb.org/t/p/original${results[i].poster_path}`,
+                poster_path: `https://image.tmdb.org/t/p/original${results[i].poster_path}`,
                 runtime: details.runtime,
                 release_date: details.release_date
             };
-            movieInfoArr[0].src = movie.imgPath;
-            movieInfoArr[1].value = movie.name;
+            movieInfoArr[0].src = movie.poster_path;
+            movieInfoArr[1].value = movie.title;
             movieInfoArr[2].value = movie.runtime;
             movieInfoArr[3].textContent = movie.overview;
             movieInfoArr[4].value = movie.release_date;
-            fileImg.value = movie.imgPath;
+            fileImg.value = movie.poster_path;
             list.classList.remove("show");
+            ul.innerHTML = "";
         });
     }
     list.appendChild(ul);
@@ -46,6 +47,7 @@ async function getDetails(id) {
         .then((res) => res.json());
     return response;
 }
+export {};
 //b11c40b0b36c592e67882ea4a2da0100
 //https://api.themoviedb.org/3/search/movie?api_key=b11c40b0b36c592e67882ea4a2da0100&query=${movieName}&language=pt-BR&page=1&include_adult=false
 //https://api.themoviedb.org/3/genre/movie/list?api_key=b11c40b0b36c592e67882ea4a2da0100&language=pt-BR

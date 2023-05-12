@@ -3,11 +3,20 @@ const moviePoster: HTMLImageElement = document.querySelector(".moviePoster")
 const lsInfo = JSON.parse(localStorage.getItem("info"))
 const seats: HTMLTitleElement = document.querySelector("#seats")
 const totalValue: HTMLLabelElement = document.querySelector("#totalValue")
-const actionButtons: NodeListOf<Element> = document.querySelectorAll(".actionButton")
-let c: number = 0
+const actionButtons: NodeListOf<Element> = document.querySelectorAll(".actionButton"),
+    itensArr: Item[] = [],
+    goToPayment: HTMLAnchorElement = document.querySelector(".goToPayment")
+
+let c: number = 0,
+     countTickets: number = 0
+
+type Item = {
+    name: string,
+    qtd: number
+}
 
 window.addEventListener("load", ()=>{
-    
+    totalValue.innerText = "0"
     const arrSeats = lsInfo[lsInfo.length -1]
     moviePoster.src = lsInfo[0]
 
@@ -25,43 +34,98 @@ window.addEventListener("load", ()=>{
 })
 
 
-actionButtons.forEach((e)=>{
+actionButtons.forEach((e: HTMLElement)=>{
     const arrSeats = lsInfo[lsInfo.length -1]
     
     e.addEventListener("click", ()=>{
-        const parent:Element = e.parentElement
-        const node:any = parent.children[1]        
-    
-        if(e.classList.contains("m")){
-            console.log(e.id)
-            if(e.id === "moreButton"){
-                c+=1
-                if(c === arrSeats.length){
-                    document.querySelectorAll("#moreButton").forEach((b)=>{
-                       b.setAttribute('disabled', 'true') 
-                    }) 
-                } 
-                node.value = Number(node.value) +1
-            }
-        }else if(e.classList.contains("l")){
+        
+        
+        const item: Item = {
+            name: null,
+            qtd: 0
+        } 
 
-            if(e.id === "lessButton"){
-                document.querySelectorAll("#moreButton").forEach((b)=>{
-                    b.removeAttribute('disabled') 
-                 }) 
-                if(!(node.value === "0" || node.value === "")){
-                    document.querySelectorAll("#lessButton").forEach((b)=>{
-                        b.removeAttribute('disabled') 
-                     }) 
-                    node.value = Number(node.value) - 1 
+        const parent:Element = e.parentElement  
+        const amount:any = parent.children[1],        
+         less: any = parent.children[0],        
+         more: any = parent.children[2]        
+       
+
+        if(e.classList.contains("m")){
+            totalValue.innerText =  String(Number(totalValue.innerText) + Number(e.dataset.value))
+            amount.value = Number(amount.value) +1
+            
+            if(findElement(itensArr, e)){
+                    itensArr.map((ele)=>{
+                        if(ele.name === e.dataset.name){
+                            ele.qtd +=1
+                        }
+                    })
+
+            }else{
+
+                item.name = e.dataset.name
+                item.qtd += 1
+                
+                itensArr.push(item)
+            }
+
+            if(e.classList.contains("ticket")){
+                countTickets++
+
+                if(countTickets === arrSeats.length){
+                 
+                    document.querySelectorAll(".ticket.m").forEach((b)=>{
+                        b.setAttribute("disabled", "true")
+                    })
+                }
+            }
+            
+        }else if(e.classList.contains("l")){
+            
+            if(findElement(itensArr, e)){
+
+                itensArr.map((ele)=>{
+                    if(ele.name === e.dataset.name){
+                        if(ele.qtd !== 0){
+                            ele.qtd -=1
+                        }
+                    }
+                })
+            }
+
+            if(!(amount.value === "0" || amount.value === "")){
+                    totalValue.innerText =  String(Number(totalValue.innerText) - Number(e.dataset.value))
+                    amount.value = Number(amount.value) - 1 
                     c-=1
-                }else{
-                    e.setAttribute('disabled', '')
-                    document.querySelectorAll("#moreButton").forEach((b)=>{
-                        b.removeAttribute('disabled') 
-                     }) 
+                    
+                    if(e.classList.contains("ticket")){
+                        countTickets--
+
+                        document.querySelectorAll(".ticket.m").forEach((b)=>{
+                        b.removeAttribute("disabled")
+                    })
+
                 }
             }
         }
+        console.log(itensArr)
     })
 })
+
+goToPayment.addEventListener("click", (e)=>{
+        const request = {
+            total: totalValue.innerText,
+            itens: itensArr.filter((ele) => ele.qtd !== 0)
+        }
+        localStorage.setItem("request", JSON.stringify(request))
+})
+
+function findElement(arr: Item[], e: HTMLElement):boolean {
+        if(arr.find((ele)=> ele.name === e.dataset.name)){
+            
+            return true
+        }
+        return false
+    
+}

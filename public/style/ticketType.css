@@ -3,8 +3,16 @@
     font-family: "Raleway", "sans-serif"; 
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 
+}
+a > input[type="button"]{
+    height: 2rem;
+    width: 6rem;
+    border: 2px solid red;
+    background-color: #2f2828;
+    color: white;
+    right: -10rem;
 }
 @media(max-width: 800px){
     .ticketValue{
@@ -75,8 +83,11 @@ main {
     margin-left: 1rem;
     height: 100dvh;
     width: 100dvw;
+    
 }
-
+.ticketTypeChoice > div{
+    overflow-x: hidden;
+}
 
 .amount{
     display: flex;
@@ -101,14 +112,14 @@ main {
     width: 2rem;
     height: 2rem;
 }
-input[type="button"].actionButton.l{
+input[type="button"].l{
     border: 1px solid black;
     border-top-left-radius: 45%;
     border-bottom-left-radius: 45%;
     background-color: black;
     color:  red;
 }
-input[type="button"].actionButton.m{
+input[type="button"].m{
     border: 1px solid black;
     border-top-right-radius: 45%;
     border-bottom-right-radius: 45%;
@@ -116,14 +127,14 @@ input[type="button"].actionButton.m{
     color:  red;
 }
 
-input[type="button"].actionButton.value{
+input[type="button"].value{
     border: 1px solid red;
     background-color: black;
     border-radius: 0%;
     color: red;
 }
 
-input[type="button"].bomboniere.le{
+/* input[type="button"].bomboniere.le{
     border: 1px solid black;
     border-top-left-radius: 45%;
     border-bottom-left-radius: 45%;
@@ -143,14 +154,14 @@ input[type="button"].bomboniere.value{
     background-color: black;
     border-radius: 0%;
     color: red;
-}
+} */
 
 
 
 .snackBar{
     overflow: hidden;
     position: absolute;
-    width: 200rem;
+    width: 50rem;
     margin-top: 2rem;
     height: 90rem;
 }
@@ -162,6 +173,7 @@ input[type="button"].bomboniere.value{
     width: 50rem;
     height: 12rem;
     box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.75);
+    overflow-x: hidden;
 }
 
 .snackInfo > div > div > div > div {
@@ -177,4 +189,12 @@ input[type="button"].bomboniere.value{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.goToPayment {
+    width: 100%;
+}
+
+.goToPayment > input[type="button"]{
+    position: absolute;
+    left: 0rem;
 }

@@ -37,7 +37,7 @@
             <h2 id="seats">Assentos: </h2><br>
             <?=getTicketInfo()?>
             <div class="amount">
-                <label>Total: </label>
+                <label>Total: R$ </label>
                 <label id="totalValue"></label>
             </div>
         </div>
@@ -46,10 +46,14 @@
                 <h1>Bomboniere</h1>
             </div>
             <?=getSnacks()?>
+            <a class="goToPayment" href="payment.php">
+                <input type="button" value="Continuar">
+            </a>
         </div>
-
-    </div>
+           
+        </div>
         </main>
+
         <script src="dist/ticketType.js"></script>
     </body>
     </html>

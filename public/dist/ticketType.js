@@ -3,9 +3,10 @@ const moviePoster = document.querySelector(".moviePoster");
 const lsInfo = JSON.parse(localStorage.getItem("info"));
 const seats = document.querySelector("#seats");
 const totalValue = document.querySelector("#totalValue");
-const actionButtons = document.querySelectorAll(".actionButton");
-let c = 0;
+const actionButtons = document.querySelectorAll(".actionButton"), itensArr = [], goToPayment = document.querySelector(".goToPayment");
+let c = 0, countTickets = 0;
 window.addEventListener("load", () => {
+    totalValue.innerText = "0";
     const arrSeats = lsInfo[lsInfo.length - 1];
     moviePoster.src = lsInfo[0];
     const duration = lsInfo[2].split(":");
@@ -22,39 +23,71 @@ window.addEventListener("load", () => {
 actionButtons.forEach((e) => {
     const arrSeats = lsInfo[lsInfo.length - 1];
     e.addEventListener("click", () => {
+        const item = {
+            name: null,
+            qtd: 0
+        };
         const parent = e.parentElement;
-        const node = parent.children[1];
+        const amount = parent.children[1], less = parent.children[0], more = parent.children[2];
         if (e.classList.contains("m")) {
-            console.log(e.id);
-            if (e.id === "moreButton") {
-                c += 1;
-                if (c === arrSeats.length) {
-                    document.querySelectorAll("#moreButton").forEach((b) => {
-                        b.setAttribute('disabled', 'true');
+            totalValue.innerText = String(Number(totalValue.innerText) + Number(e.dataset.value));
+            amount.value = Number(amount.value) + 1;
+            if (findElement(itensArr, e)) {
+                itensArr.map((ele) => {
+                    if (ele.name === e.dataset.name) {
+                        ele.qtd += 1;
+                    }
+                });
+            }
+            else {
+                item.name = e.dataset.name;
+                item.qtd += 1;
+                itensArr.push(item);
+            }
+            if (e.classList.contains("ticket")) {
+                countTickets++;
+                if (countTickets === arrSeats.length) {
+                    document.querySelectorAll(".ticket.m").forEach((b) => {
+                        b.setAttribute("disabled", "true");
                     });
                 }
-                node.value = Number(node.value) + 1;
             }
         }
         else if (e.classList.contains("l")) {
-            if (e.id === "lessButton") {
-                document.querySelectorAll("#moreButton").forEach((b) => {
-                    b.removeAttribute('disabled');
+            if (findElement(itensArr, e)) {
+                itensArr.map((ele) => {
+                    if (ele.name === e.dataset.name) {
+                        if (ele.qtd !== 0) {
+                            ele.qtd -= 1;
+                        }
+                    }
                 });
-                if (!(node.value === "0" || node.value === "")) {
-                    document.querySelectorAll("#lessButton").forEach((b) => {
-                        b.removeAttribute('disabled');
-                    });
-                    node.value = Number(node.value) - 1;
-                    c -= 1;
-                }
-                else {
-                    e.setAttribute('disabled', '');
-                    document.querySelectorAll("#moreButton").forEach((b) => {
-                        b.removeAttribute('disabled');
+            }
+            if (!(amount.value === "0" || amount.value === "")) {
+                totalValue.innerText = String(Number(totalValue.innerText) - Number(e.dataset.value));
+                amount.value = Number(amount.value) - 1;
+                c -= 1;
+                if (e.classList.contains("ticket")) {
+                    countTickets--;
+                    document.querySelectorAll(".ticket.m").forEach((b) => {
+                        b.removeAttribute("disabled");
                     });
                 }
             }
         }
+        console.log(itensArr);
     });
 });
+goToPayment.addEventListener("click", (e) => {
+    const request = {
+        total: totalValue.innerText,
+        itens: itensArr.filter((ele) => ele.qtd !== 0)
+    };
+    localStorage.setItem("request", JSON.stringify(request));
+});
+function findElement(arr, e) {
+    if (arr.find((ele) => ele.name === e.dataset.name)) {
+        return true;
+    }
+    return false;
+}

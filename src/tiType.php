@@ -1,6 +1,6 @@
 <?php
 include_once "../src/data.php";
-function getSanckType(){
+function getSanckType($data){
     $c = 1;
     $db = connect();
     $sql = "SELECT ds_tipo FROM tipo_snack";
@@ -9,9 +9,9 @@ function getSanckType(){
    
        $html = "<div>
         <div>
-            <input class='bomboniere le' id='snack".$c."' type='button'd value='-'>
-            <input class='bomboniere value' id='snack".$c."'  type='button'>
-            <input class='bomboniere mo' id='snack".$c."' type='button' value='+''>      
+            <input class='actionButton bomboniere l' id='snack".$c."' data-name='".$data['ds_snack']."' data-value='".$data['valor']."' type='button'd value='-'>
+            <input class='actionButton bomboniere value' id='snack".$c."'  type='button'>
+            <input class='actionButton bomboniere m' id='snack".$c."' data-name='".$data['ds_snack']."' data-value='".$data['valor']."' type='button' value='+''>      
         </div>
         </div>";
         $c++;
@@ -34,7 +34,7 @@ function getSnacks(){
                 </div>
                 <div class='type'>
                     <div>
-                        ".getSanckType()."
+                        ".getSanckType($data)."
                     </div>
                 </div>
             </div>";
@@ -52,9 +52,9 @@ function getTicketInfo(){
         <h2>".$data['ds_tipo']."</h3>
         <h3>R$".$data['valor']."</h3>
         <div>
-            <input class='actionButton l' type='button' id='lessButton' value='-'>
+            <input class='actionButton l ticket' type='button' id='lessButton' data-name='".$data['ds_tipo']."' data-value='".$data['valor']."' value='-'>
             <input class='actionButton value'   type='button' >
-            <input class='actionButton m' type='button' id='moreButton' value='+'>
+            <input class='actionButton m ticket'  type='button' id='moreButton' data-name='".$data['ds_tipo']."' data-value='".$data['valor']."' value='+'>
         </div>
     </div>";
     $c++;

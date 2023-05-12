@@ -2,8 +2,18 @@ const card:  NodeListOf<Element> = document.querySelectorAll(".card")
 const urlIndex: URLSearchParams = new URLSearchParams(window.location.search);
 const searchButton: HTMLButtonElement = document.querySelector("#searchButton") 
 const searchInput:HTMLInputElement = document.querySelector("#searchInput")
-const movies:HTMLDivElement = document.querySelector(".movies")
+const movies:HTMLDivElement = document.querySelector(".movies"),
+    amount:HTMLSpanElement = document.querySelector("#amount")
 let c: number = 0
+
+
+window.addEventListener('load', ()=>{
+    if(localStorage.getItem("request")){
+        const req = JSON.parse(localStorage.getItem("request"))
+        amount.classList.toggle("show")
+        amount.innerText ="1"
+    }
+})
 
 card.forEach((e)=>{
     e.addEventListener("click", ()=>{
