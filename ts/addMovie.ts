@@ -7,7 +7,6 @@ const searchButton:HTMLInputElement = document.querySelector("#search"),
     list: HTMLDivElement = document.querySelector("#list"),
     movieInfoArr:any = document.querySelectorAll(".info"),
     fileImg:HTMLInputElement = document.querySelector("#fileImg")
-let foundMovies
 
 const ul:HTMLUListElement = document.createElement("ul")
 
@@ -16,7 +15,7 @@ searchMovie.addEventListener("keyup", async ()=>{
     list.innerHTML = ""
     const foundMovies = await search(searchMovie.value)
    
-    let results
+    let results: any
 
      ({results} = foundMovies)
    
@@ -67,11 +66,8 @@ async function search(movieName:string) {
     return response;
 }
 
-async function getDetails(id){
+async function getDetails(id:number){
     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=b11c40b0b36c592e67882ea4a2da0100&language=pt-BR`)
                     .then((res) => res.json())
     return response
 }
-//b11c40b0b36c592e67882ea4a2da0100
-//https://api.themoviedb.org/3/search/movie?api_key=b11c40b0b36c592e67882ea4a2da0100&query=${movieName}&language=pt-BR&page=1&include_adult=false
-//https://api.themoviedb.org/3/genre/movie/list?api_key=b11c40b0b36c592e67882ea4a2da0100&language=pt-BR

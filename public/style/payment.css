@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway";
+}
+main{
+    display: flex;
+    justify-content: space-between;
+
+}
+.moviePoster{
+    height: 20rem;
+    width: 17rem;
+}
+
+.txtInfo{
+    color: rgb(191, 65, 65);
+}
+.asideInfo{
+    overflow: hidden;
+    display: flex;
+    justify-self: flex-start;
+    border-right: 2px solid black;
+
+}
+.itens-container{
+    width: 75rem;
+}
+.itens{
+    height: 10rem;
+}
+.paymentMethod-container{
+    height: 25rem;
+}
+.paymentMethod{
+    position: relative;
+    width:90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.methods{
+    display: flex;
+    column-gap: 2rem ;
+}

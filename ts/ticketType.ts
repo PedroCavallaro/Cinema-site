@@ -66,7 +66,7 @@ actionButtons.forEach((e: HTMLElement)=>{
 
                 item.name = e.dataset.name
                 item.qtd += 1
-                
+
                 itensArr.push(item)
             }
 
@@ -109,7 +109,6 @@ actionButtons.forEach((e: HTMLElement)=>{
                 }
             }
         }
-        console.log(itensArr)
     })
 })
 
@@ -129,3 +128,4 @@ function findElement(arr: Item[], e: HTMLElement):boolean {
         return false
     
 }
+

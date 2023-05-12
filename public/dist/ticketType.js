@@ -75,7 +75,6 @@ actionButtons.forEach((e) => {
                 }
             }
         }
-        console.log(itensArr);
     });
 });
 goToPayment.addEventListener("click", (e) => {

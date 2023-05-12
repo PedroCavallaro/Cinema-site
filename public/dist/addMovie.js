@@ -1,5 +1,4 @@
 const searchButton = document.querySelector("#search"), searchMovie = document.querySelector("#searchMovie"), list = document.querySelector("#list"), movieInfoArr = document.querySelectorAll(".info"), fileImg = document.querySelector("#fileImg");
-let foundMovies;
 const ul = document.createElement("ul");
 searchMovie.addEventListener("keyup", async () => {
     list.innerHTML = "";
@@ -48,6 +47,3 @@ async function getDetails(id) {
     return response;
 }
 export {};
-//b11c40b0b36c592e67882ea4a2da0100
-//https://api.themoviedb.org/3/search/movie?api_key=b11c40b0b36c592e67882ea4a2da0100&query=${movieName}&language=pt-BR&page=1&include_adult=false
-//https://api.themoviedb.org/3/genre/movie/list?api_key=b11c40b0b36c592e67882ea4a2da0100&language=pt-BR
