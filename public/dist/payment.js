@@ -22,7 +22,7 @@ function renderItens(parentElement, list) {
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
         const tr = document.createElement("tr");
-        td1.innerText = e.qtd + "x ";
+        td1.innerText = e.qtd + "x";
         td2.innerHTML = e.name;
         tr.append(td1, td2);
         parentElement.append(tr);

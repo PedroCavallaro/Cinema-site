@@ -4,6 +4,7 @@ const data: any[] = treatData(JSON.parse(localStorage.getItem("info"))),
     request = JSON.parse(localStorage.getItem("request")),
     finalValue: HTMLParagraphElement = document.querySelector("#finalValue"),
     itensList: HTMLElement = document.querySelector(".itensList")
+    
 window.addEventListener("load", ()=>{
 
     renderItens(itensList, request.itens)
@@ -40,7 +41,7 @@ function renderItens(parentElement: HTMLElement, list: object[]){
             const td2 = document.createElement("td")
             const tr = document.createElement("tr")
 
-            td1.innerText = e.qtd + "x "
+            td1.innerText = e.qtd + "x"
             td2.innerHTML = e.name
             tr.append(td1,td2)
             parentElement.append(tr)

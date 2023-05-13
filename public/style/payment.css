@@ -1,12 +1,20 @@
 *{
     margin: 0;
     padding: 0;
+    color: white;
     font-family: "Raleway";
 }
 main{
     display: flex;
     justify-content: space-between;
 
+}
+header{
+    border-bottom: 1px solid black;
+}
+body{
+    background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);
+    background-repeat: no-repeat;
 }
 .moviePoster{
     height: 20rem;
@@ -17,6 +25,9 @@ main{
     color: rgb(191, 65, 65);
 }
 .asideInfo{
+    height: 100dvh;
+    color: white;
+    background-color: black;
     overflow: hidden;
     display: flex;
     justify-self: flex-start;
@@ -26,13 +37,13 @@ main{
 .itens-container{
     width: 75rem;
 }
-.itens{
-    height: 13rem;
-}
 .paymentMethod-container{
+    width: 100%;
+    border-top: 2px solid black;
     height: 25rem;
 }
 .paymentMethod{
+    margin-top: 3rem;
     position: relative;
     width:90%;
     display: flex;
@@ -46,6 +57,14 @@ main{
     display: flex;
     column-gap: 2rem ;
 }
+.methods > label > input{
+    visibility: hidden;
+}
+
+.methods > label > input + img{
+    cursor:pointer;
+}
+
 .end{
     display: flex;
     justify-content: flex-end;
@@ -85,4 +104,9 @@ main{
     background-color: #2f2828;
     color: white;
     font-size: 14px;
+}
+.imgMethod{
+    mix-blend-mode: color-burn;
+    height: 2rem;
+    width: 2rem;
 }

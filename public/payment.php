@@ -1,5 +1,5 @@
 <?php
-
+include_once "../src/payment.php";
 setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
 date_default_timezone_set('Europe/Lisbon');
 ?>
@@ -53,9 +53,7 @@ date_default_timezone_set('Europe/Lisbon');
                 <div class="paymentMethod">
                     <h2>Método de Pagamento</h2>
                     <div class="methods">
-                        <input type="button" value="PIX">
-                        <input type="button" value="Cartão de Credito">
-                        <input type="button" value="Cartão de Débito">
+                        <?=paymentMethods()?>
                     </div>
                 </div>
             </div>
