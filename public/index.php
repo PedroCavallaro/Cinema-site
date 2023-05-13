@@ -32,7 +32,8 @@
             </div>
             <div class="userHeader">
                 <div class="shopCart">
-                    <img id="shopCart" class="imgFilter" src="img/shopCart.png" width="40px" height="40px" alt="shop cart">
+                    <a href="./payment.php">
+                        <img id="shopCart" class="imgFilter" src="img/shopCart.png" width="40px" height="40px" alt="shop cart"></a>
                     <span id="amount"></span>
                 </div>
                 <img src="img/logoTest.png" class="imgFilter" id="userIcon" width="40px" height="40px" alt="user icon">

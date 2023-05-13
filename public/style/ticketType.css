@@ -32,6 +32,8 @@ a > input[type="button"]{
 html{
     overflow: auto;
     height: 50rem;
+    background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);
+
 }
 .moviePoster{
     height: 20rem;
