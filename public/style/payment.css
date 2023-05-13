@@ -105,8 +105,14 @@ body{
     color: white;
     font-size: 14px;
 }
+
+
 .imgMethod{
-    mix-blend-mode: color-burn;
-    height: 2rem;
-    width: 2rem;
+width: 2rem;
+height: 2rem;
+}
+
+.imgMethod:hover{
+    transition: 0.4s ease;
+    filter: contrast(5%);
 }

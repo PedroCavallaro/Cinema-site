@@ -8,8 +8,8 @@ function paymentMethods(){
     $result = $bd->query($sql);
 
     while($data = $result->fetch(PDO::FETCH_ASSOC)){
-        echo " <label for='pix'>
-                    <input type='radio' name='txtMethod' id='pix' value='".$data["id_metodo"]."'>
+        echo " <label class='methodLabel' for='".$data["id_metodo"]."'>
+                    <input type='radio' name='txtMethod' id='".$data['id_metodo']."' class='methodButton' value='".$data["id_metodo"]."'>
                     <img src='./img/method".$data["id_metodo"].".png' class='imgMethod' draggable='false'>
                 </label>
                 <label for='pix'>".utf8_encode($data["nm_metodo"])."</label>";

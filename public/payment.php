@@ -58,7 +58,7 @@ date_default_timezone_set('Europe/Lisbon');
                 </div>
             </div>
             <div class="end">
-                <div>
+                <div class="endButton">
                     <input type="button" value="Finalizar"> 
                     <div>
                         <p>R$</p>

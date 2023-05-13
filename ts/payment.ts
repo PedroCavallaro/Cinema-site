@@ -3,10 +3,14 @@ const data: any[] = treatData(JSON.parse(localStorage.getItem("info"))),
     moviePosterP: HTMLImageElement = document.querySelector(".moviePoster"),
     request = JSON.parse(localStorage.getItem("request")),
     finalValue: HTMLParagraphElement = document.querySelector("#finalValue"),
-    itensList: HTMLElement = document.querySelector(".itensList")
-    
-window.addEventListener("load", ()=>{
+    itensList: HTMLElement = document.querySelector(".itensList"),
+    methodButton:any = document.querySelectorAll(".methodButton"),
+    imgMethod:any = document.querySelectorAll(".imgMethod"),
+    endButton: HTMLDivElement = document.querySelector(".endButton")
 
+
+window.addEventListener("load", ()=>{
+    
     renderItens(itensList, request.itens)
 
     moviePosterP.src = data[0]
@@ -18,7 +22,17 @@ window.addEventListener("load", ()=>{
 
 })
 
+methodButton.forEach((e: HTMLInputElement)=>{
+    e.addEventListener("click", ()=>{
+        const parent: any = e.parentElement
+        document.querySelectorAll('.imgMethod').forEach((e: any)=>{
+            e.style.filter = ""
+        })
 
+        parent.children[1].style.filter = "contrast(5%)"
+
+    })
+})
 
 
 function treatData(lsInfo: any[]){
@@ -47,3 +61,9 @@ function renderItens(parentElement: HTMLElement, list: object[]){
             parentElement.append(tr)
         })
 }
+
+
+endButton.addEventListener("click", ()=>{
+    const radio = document.querySelector("input[type='radio']:checked")
+    console.log(radio)
+})

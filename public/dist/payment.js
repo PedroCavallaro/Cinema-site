@@ -1,4 +1,4 @@
-const data = treatData(JSON.parse(localStorage.getItem("info"))), infoToset = document.querySelectorAll(".info"), moviePosterP = document.querySelector(".moviePoster"), request = JSON.parse(localStorage.getItem("request")), finalValue = document.querySelector("#finalValue"), itensList = document.querySelector(".itensList");
+const data = treatData(JSON.parse(localStorage.getItem("info"))), infoToset = document.querySelectorAll(".info"), moviePosterP = document.querySelector(".moviePoster"), request = JSON.parse(localStorage.getItem("request")), finalValue = document.querySelector("#finalValue"), itensList = document.querySelector(".itensList"), methodButton = document.querySelectorAll(".methodButton"), imgMethod = document.querySelectorAll(".imgMethod"), endButton = document.querySelector(".endButton");
 window.addEventListener("load", () => {
     renderItens(itensList, request.itens);
     moviePosterP.src = data[0];
@@ -6,6 +6,15 @@ window.addEventListener("load", () => {
         infoToset[i].innerHTML = data[i];
     }
     finalValue.innerText = request.total;
+});
+methodButton.forEach((e) => {
+    e.addEventListener("click", () => {
+        const parent = e.parentElement;
+        document.querySelectorAll('.imgMethod').forEach((e) => {
+            e.style.filter = "";
+        });
+        parent.children[1].style.filter = "contrast(5%)";
+    });
 });
 function treatData(lsInfo) {
     const duration = lsInfo[2].split(" ");
@@ -28,3 +37,7 @@ function renderItens(parentElement, list) {
         parentElement.append(tr);
     });
 }
+endButton.addEventListener("click", () => {
+    const radio = document.querySelector("input[type='radio']:checked");
+    console.log(radio);
+});

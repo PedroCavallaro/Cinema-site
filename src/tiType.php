@@ -9,9 +9,9 @@ function getSanckType($data){
    
        $html = "<div>
         <div>
-            <input class='actionButton bomboniere l' id='snack".$c."' data-name='".$data['ds_snack']."' data-value='".$data['valor']."' type='button'd value='-'>
+            <input class='actionButton bomboniere l' id='snack".$c."'  data-name='".utf8_encode($data['ds_snack'])."' data-value='".$data['valor']."' type='button'd value='-'>
             <input class='actionButton bomboniere value' id='snack".$c."'  type='button'>
-            <input class='actionButton bomboniere m' id='snack".$c."' data-name='".$data['ds_snack']."' data-value='".$data['valor']."' type='button' value='+''>      
+            <input class='actionButton bomboniere m' id='snack".$c."' data-name='".utf8_encode($data['ds_snack'])."' data-value='".$data['valor']."' type='button' value='+''>      
         </div>
         </div>";
         $c++;
@@ -52,9 +52,9 @@ function getTicketInfo(){
         <h2>".$data['ds_tipo']."</h3>
         <h3>R$".$data['valor']."</h3>
         <div>
-            <input class='actionButton l ticket' type='button' id='lessButton' data-name='".$data['ds_tipo']."' data-value='".$data['valor']."' value='-'>
+            <input class='actionButton l ticket' type='button' id='lessButton' data-name='".utf8_encode($data['ds_tipo'])."' data-value='".$data['valor']."' value='-'>
             <input class='actionButton value'   type='button' >
-            <input class='actionButton m ticket'  type='button' id='moreButton' data-name='".$data['ds_tipo']."' data-value='".$data['valor']."' value='+'>
+            <input class='actionButton m ticket'  type='button' id='moreButton' data-name='".utf8_encode($data['ds_tipo'])."' data-value='".$data['valor']."' value='+'>
         </div>
     </div>";
     $c++;
