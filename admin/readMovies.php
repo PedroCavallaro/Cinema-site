@@ -3,6 +3,10 @@
 
 include_once "../src/readMovies.php";
 
+session_start();
+if(!$_SESSION["adminLogged"]){
+    header("location:../public/loginPage.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

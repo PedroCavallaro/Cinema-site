@@ -3,7 +3,8 @@
     font-family: "Raleway", "sans-serif"; 
     margin: 0;
     padding: 0;
-    /* overflow: hidden; */
+    color: white;
+    overflow: hidden;
 
 }
 a > input[type="button"]{

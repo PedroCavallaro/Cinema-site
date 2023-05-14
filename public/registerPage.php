@@ -16,24 +16,6 @@
     <main>
 
         <form action="../src/register.php" method="post">
-            <!-- <div class="mainContainer">
-                <div class="container">
-                    <div class="titlle">
-                        <h1>Cadastro</h1>
-                    </div>
-                    <div>
-                        <label for="username">Usuário</label><br>
-                        <input type="text" id="username" name="username"><br>
-                        <div class="passContainer"></div>
-                            <label for="password">Senha</label><br>
-                            <input type="password" id="password" name="password">
-                        <div class="foot">
-                            <input type="submit" id="registerButton" value="Cadastrar"><br>
-                            <span id="spanError"></span>
-                        </div>
-                    </div>
-                </div>
-           </div> -->
            <div class="container">
                 <div class="title">
                     <h1>Cadastro</h1>

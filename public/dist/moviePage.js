@@ -18,7 +18,6 @@ const mainItens = {
 const seatsLetter = [] = "ABCDEFGHIJK".split(''), date = new Date();
 let saveText = [];
 window.addEventListener("load", async () => {
-    // const  movieData = await search(movieModal.movieName)
     mainItens.imgAncor.removeAttribute("href");
     createSeats(movieModal.seatsChose);
     mainItens.today.innerText = String(date.getDate()) + " / " + String(date.getMonth() + 1);
@@ -34,9 +33,7 @@ mainItens.roomButton.forEach((e) => {
         movieModal.seatsMainContainer.classList.add("show");
         movieModal.moviePoster.src = mainItens.movieImg.src;
         const seatsList = document.querySelectorAll(".seat");
-        //h3
         roomEle.roomPick.innerHTML = roomEle.roomNodes[1].textContent;
-        //p 
         roomEle.roomTime.innerHTML = `Horário: ${roomEle.roomNodes[3].textContent}`;
         seatsList.forEach((e) => {
             e.addEventListener("click", () => {
@@ -72,7 +69,6 @@ movieModal.finishButton.addEventListener("click", () => {
     else {
         const anchor = document.querySelector("#finishChoice > a");
         anchor.href = "";
-        // movieModal.finishButton.disabled = true;
     }
 });
 function createSeats(divMain) {

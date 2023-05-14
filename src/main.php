@@ -9,7 +9,7 @@ $test = searchUser($username, $password);
 
 if($test["username"] == "admin" and $test["password"] == "1234"){
     
-    $_SESSION["logged"] = $username;
+    $_SESSION["adminLogged"] = $username;
     header("location:../admin/addMovie.php");
 
 }else if($test["username"] == $username and $test["password"] == $password){

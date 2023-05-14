@@ -7,6 +7,10 @@ mb_internal_encoding('UTF8');
 mb_regex_encoding('UTF8');
 ini_set('default_charset','UTF-8');
 $cod =$_GET["cod"];
+session_start();
+if(!$_SESSION["adminLogged"]){
+    header("location:../public/loginPage.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

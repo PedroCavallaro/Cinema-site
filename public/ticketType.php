@@ -2,7 +2,10 @@
     include_once "../src/tiType.php";
     setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
     date_default_timezone_set('Europe/Lisbon');
-
+    
+    if(!$_SESSION["logged"] || !$_SESSION["adminLogged"]){
+        header("location:./loginPage.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

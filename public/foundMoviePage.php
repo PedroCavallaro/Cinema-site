@@ -2,8 +2,6 @@
     include_once "../src/data.php";
     $username = filter_input(INPUT_GET, "username", FILTER_SANITIZE_STRING);
     session_start();
-    if(isset($_SESSION['foundMovies'])){
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

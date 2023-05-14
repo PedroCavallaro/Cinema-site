@@ -9,7 +9,7 @@ const delet:any = document.querySelectorAll(".delete"),
     delButton: HTMLInputElement = document.querySelector("#delButton"),
     delForm:HTMLFormElement = document.querySelector("#delForm")
 
-delet.forEach((e)=>{
+delet.forEach((e: any)=>{
     e.addEventListener("click", ()=>{
         modalContainer.classList.add("show")
         modal.classList.add("show")

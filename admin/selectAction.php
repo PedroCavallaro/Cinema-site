@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+if(!$_SESSION["adminLogged"]){
+    header("location:../public/loginPage.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

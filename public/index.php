@@ -2,7 +2,7 @@
     include_once "../src/data.php";
     $username = filter_input(INPUT_GET, "username", FILTER_SANITIZE_STRING);
     session_start();
-    if(!$_SESSION["logged"]){
+    if(!$_SESSION["logged"] || !$_SESSION["adminLogged"]){
         header("location:./loginPage.php");
     }
 ?>
