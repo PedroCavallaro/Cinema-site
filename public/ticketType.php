@@ -2,10 +2,10 @@
     include_once "../src/tiType.php";
     setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
     date_default_timezone_set('Europe/Lisbon');
-    
-    if(!$_SESSION["logged"] || !$_SESSION["adminLogged"]){
+    session_start();
+    if(!$_SESSION["logged"]){
         header("location:./loginPage.php");
-    }
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/ticketType.css">
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
     <title>Tipo Ingresso</title>
 </head>
 <body>
@@ -50,7 +52,7 @@
         </div>
         <div class="snackBar">
             <div>
-                <h1>Bomboniere</h1>
+                <h1 id="bombonierTitle">Bomboniere</h1>
             </div>
             <?=getSnacks()?>
             <a class="goToPayment" href="payment.php">
@@ -60,7 +62,7 @@
            
         </div>
         </main>
-
+    
         <script src="dist/ticketType.js"></script>
     </body>
     </html>

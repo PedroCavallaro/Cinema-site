@@ -1,9 +1,10 @@
 <?php
 
 session_start();
-if(!$_SESSION["adminLogged"]){
+if($_SESSION["logged"] != "admin") {
     header("location:../public/loginPage.php");
 }
+
 
 ?>
 <!DOCTYPE html>

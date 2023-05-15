@@ -16,6 +16,17 @@ body{
     background: linear-gradient(to right, #000000, #66261f, #6b2929, #000000);
     background-repeat: no-repeat;
 }
+
+input[type="button"],input[type="submit"]{
+    cursor:pointer;
+    align-items: center;
+    height: 2rem;
+    width: 6rem;
+    border: 2px solid red;
+    background-color: #2f2828;
+    color: white;
+    font-size: 14px;
+}
 .moviePoster{
     height: 20rem;
     width: 17rem;
@@ -26,12 +37,13 @@ body{
 }
 .asideInfo{
     height: 100dvh;
+    width: 15rem;
     color: white;
     background-color: black;
     overflow: hidden;
     display: flex;
     justify-self: flex-start;
-    border-right: 2px solid black;
+    border-right: 2px solid     black;
 
 }
 .itens-container{
@@ -95,18 +107,6 @@ body{
     
 }
 
-.end > div > input[type="button"] {
-    cursor:pointer;
-    align-items: center;
-    height: 2rem;
-    width: 6rem;
-    border: 2px solid red;
-    background-color: #2f2828;
-    color: white;
-    font-size: 14px;
-}
-
-
 .imgMethod{
 width: 2rem;
 height: 2rem;
@@ -115,4 +115,43 @@ height: 2rem;
 .imgMethod:hover{
     transition: 0.4s ease;
     filter: contrast(5%);
+}
+
+.paymentInfo{
+     width: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.paymentInfo > img{
+    mix-blend-mode: color-burn;
+    width: 10rem;
+    height: 10rem;
+}
+
+.paymentCard{
+    width: 20rem;
+    display: flex;
+    justify-content:flex-end;
+    align-items: flex-end;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+.nameInput{
+    width: 16rem;
+    height: 2rem;
+    color: black;
+}
+
+.numberInput{
+    color: black;
+    width: 6rem;
+    height: 2rem;
+}
+#confirmButton{
+    position: relative;
+    bottom:-1rem;
+    left: 33%;
 }

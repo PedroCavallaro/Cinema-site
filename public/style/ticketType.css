@@ -66,6 +66,12 @@ header > div > a > img{
     box-shadow: 1px 0px 0px 0px rgba(0,0,0,0.75);
     font-size: 0.8rem;
 }
+#seats{
+    color: rgb(191, 65, 65);
+}
+#bombonierTitle{
+    color: rgb(191, 65, 65);
+}
 main {
     width: 100dvw;
     height: 100dvh;
@@ -136,31 +142,6 @@ input[type="button"].value{
     border-radius: 0%;
     color: red;
 }
-
-/* input[type="button"].bomboniere.le{
-    border: 1px solid black;
-    border-top-left-radius: 45%;
-    border-bottom-left-radius: 45%;
-    background-color: black;
-    color:  red;
-}
-input[type="button"].bomboniere.mo{
-    border: 1px solid black;
-    border-top-right-radius: 45%;
-    border-bottom-right-radius: 45%;
-    background-color: black;
-    color:  red;
-}
-
-input[type="button"].bomboniere.value{
-    border: 1px solid red;
-    background-color: black;
-    border-radius: 0%;
-    color: red;
-} */
-
-
-
 .snackBar{
     overflow: hidden;
     position: absolute;

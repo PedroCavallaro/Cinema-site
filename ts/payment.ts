@@ -6,11 +6,27 @@ const data: any[] = treatData(JSON.parse(localStorage.getItem("info"))),
     itensList: HTMLElement = document.querySelector(".itensList"),
     methodButton:any = document.querySelectorAll(".methodButton"),
     imgMethod:any = document.querySelectorAll(".imgMethod"),
-    endButton: HTMLDivElement = document.querySelector(".endButton")
+    endButton: HTMLDivElement = document.querySelector(".endButton"),
+    paymentInfo: HTMLDivElement = document.querySelector(".paymentInfo"),
 
+    const popUp = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      })
+      
+     
+
+enum methods {
+    PIX = 1,
+    crediCard,
+    debitCard
+}
 
 window.addEventListener("load", ()=>{
-    
+   
     renderItens(itensList, request.itens)
 
     moviePosterP.src = data[0]
@@ -26,9 +42,24 @@ methodButton.forEach((e: HTMLInputElement)=>{
     e.addEventListener("click", ()=>{
         const parent: any = e.parentElement
         document.querySelectorAll('.imgMethod').forEach((e: any)=>{
-            e.style.filter = ""
+            e.style.filter = ""  
         })
+        switch(Number(e.id)){
 
+            case methods.PIX:
+                pix(paymentInfo)
+                break
+
+            case methods.crediCard:
+                cards(paymentInfo)
+                validateForm()
+                break;
+
+            case methods.debitCard:
+                cards(paymentInfo)
+                validateForm()
+                break;
+        }
         parent.children[1].style.filter = "contrast(5%)"
 
     })
@@ -50,20 +81,111 @@ function treatData(lsInfo: any[]){
 
 
 function renderItens(parentElement: HTMLElement, list: object[]){
-        list.forEach((e: any)=>{
-            const td1 = document.createElement("td")
-            const td2 = document.createElement("td")
-            const tr = document.createElement("tr")
+    list.forEach((e: any)=>{
+        const td1 = document.createElement("td")
+        const td2 = document.createElement("td")
+        const tr = document.createElement("tr")
 
-            td1.innerText = e.qtd + "x"
-            td2.innerHTML = e.name
-            tr.append(td1,td2)
-            parentElement.append(tr)
-        })
+        td1.innerText = e.qtd + "x"
+        td2.innerHTML = e.name
+        tr.append(td1,td2)
+        parentElement.append(tr)
+    })
 }
 
 
-endButton.addEventListener("click", ()=>{
-    const radio = document.querySelector("input[type='radio']:checked")
-    console.log(radio)
+endButton.addEventListener("click", (e)=>{
+    if(document.querySelector("input[type='radio']:checked") === null){
+        e.preventDefault()
+        Swal.fire({
+            icon:'error',
+            text:'Seleciona um método de pagamento',
+            background: "#6b2929",
+            color: "white",
+            confirmButtonColor: "black"
+        })
+    }else{
+        
+        const radio = document.querySelector("input[type='radio']:checked") 
+    }
 })
+
+
+function pix(mainDiv:HTMLDivElement){
+    mainDiv.innerHTML = ""
+    const div = document.createElement("div")
+    const img = document.createElement("img")
+    const h3 = document.createElement("h3")
+    div.classList.toggle("paymentInfo")
+    h3.innerText = "QR code"
+    div.append(h3, img)
+    img.src = "./img/qrCode.png"
+    mainDiv.append(div)
+}
+function cards(mainDiv: HTMLDivElement){
+
+    mainDiv.innerHTML = ""
+    const arrLabels = ["Nome no cartão", "Numero do cartão"]
+    const button:HTMLInputElement = document.createElement("input")
+    button.type = "button"
+    button.id = "confirmButton"
+    button.value = "Confirmar"
+    const arrLabels2 = ["CVV", "Vencimento"]
+   
+    for(let i = 0; i < arrLabels.length; i++){
+            const label: HTMLLabelElement = createEle("label")
+            const label2: HTMLLabelElement = createEle("label")
+            const input: HTMLInputElement = createEle("input")
+            const input2: HTMLInputElement = createEle("input")
+            const div: HTMLDivElement = createEle("div")
+            const br = document.createElement("br")
+            const divChild = createEle("div")
+            const divChild2 = createEle("div")
+
+
+            input.classList.toggle("nameInput")
+            input.classList.toggle("infoInput")
+            input2.classList.toggle("numberInput")
+            input2.classList.toggle("infoInput")
+            div.classList.toggle("paymentCard")
+            label.innerText = arrLabels[i]
+            label2.innerText = arrLabels2[i]
+
+
+            divChild.append(label,createEle("br"), input, createEle("br"))
+            divChild2.append(label2,createEle("br"), input2)
+            div.append(divChild, divChild2)
+            mainDiv.append(div)
+    
+        }
+    mainDiv.append(button)  
+}
+
+
+function createEle(element: string): any{
+    return document.createElement(element)
+}
+
+function validateForm(){
+    document.querySelector("#confirmButton")
+                .addEventListener("click",(e)=>{
+                    
+                    const info:any = document.querySelectorAll(".infoInput")
+                    info.forEach((e:HTMLInputElement)=>{
+                        if(!(e.value)){
+                        
+                            popUp.fire ({
+                                icon: "error",
+                                title: "Preencha os campos",
+                                background: "black"
+                            })
+                        }else{
+                            popUp.fire ({
+                                icon: "success",
+                                title: "Dados cadastrados",
+                                background: "black"
+                            })
+                        }
+                    })
+                })
+}

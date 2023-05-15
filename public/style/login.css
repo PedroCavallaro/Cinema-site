@@ -28,6 +28,7 @@ input[type="text"], input[type="password"]{
     font-size: 14px;
     height: 2rem;
     width: 12rem;
+    color: red;
     border: 2px solid red;
     background-color: #2f2828;
 }
@@ -35,6 +36,7 @@ input[type="text"]:focus, input[type="password"]:focus{
     outline: none;    
     border: 2px solid red;
     background-color:white;
+    color: black;
 }
 form{
 

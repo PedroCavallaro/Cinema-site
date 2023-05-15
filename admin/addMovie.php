@@ -9,8 +9,7 @@ ini_set('default_charset','UTF-8');
 
 
 session_start();
-echo $_SESSION["adminLogged"];
-if($_SESSION["adminLogged"] != "admin") {
+if($_SESSION["logged"] != "admin") {
     header("location:../public/loginPage.php");
 }
 

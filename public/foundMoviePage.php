@@ -2,6 +2,9 @@
     include_once "../src/data.php";
     $username = filter_input(INPUT_GET, "username", FILTER_SANITIZE_STRING);
     session_start();
+    if(!$_SESSION["logged"]){
+        header("location:./loginPage.php");
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">

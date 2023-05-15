@@ -14,7 +14,6 @@
         </div>
     </header>
     <main>
-
         <form action="../src/register.php" method="post">
            <div class="container">
                 <div class="title">

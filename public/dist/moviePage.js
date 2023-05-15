@@ -55,7 +55,7 @@ mainItens.roomButton.forEach((e) => {
         movieModal.seatsMainContainer.classList.remove("show");
     });
 });
-movieModal.finishButton.addEventListener("click", () => {
+movieModal.finishButton.addEventListener("click", (e) => {
     if (!(typeof saveText[0] === "undefined")) {
         const movieInfo = [];
         const elements = document.querySelectorAll(".modalInfo");

@@ -1,4 +1,3 @@
-//moviePage
 export interface modalItens {
     movieName:  string,
     seatsChose: HTMLDivElement,

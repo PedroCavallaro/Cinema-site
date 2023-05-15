@@ -4,11 +4,11 @@ const lsInfo = JSON.parse(localStorage.getItem("info"))
 const seats: HTMLTitleElement = document.querySelector("#seats")
 const totalValue: HTMLLabelElement = document.querySelector("#totalValue")
 const actionButtons: NodeListOf<Element> = document.querySelectorAll(".actionButton"),
-    itensArr: Item[] = [],
-    goToPayment: HTMLAnchorElement = document.querySelector(".goToPayment")
+itensArr: Item[] = [],
+goToPayment: HTMLAnchorElement = document.querySelector(".goToPayment")
 
 let c: number = 0,
-     countTickets: number = 0
+countTickets: number = 0
 
 type Item = {
     name: string,
@@ -16,6 +16,7 @@ type Item = {
 }
 
 window.addEventListener("load", ()=>{
+    
     totalValue.innerText = "0"
     const arrSeats = lsInfo[lsInfo.length -1]
     moviePoster.src = lsInfo[0]
@@ -111,13 +112,25 @@ actionButtons.forEach((e: HTMLElement)=>{
         }
     })
 })
-
 goToPayment.addEventListener("click", (e)=>{
         const request = {
             total: totalValue.innerText,
             itens: itensArr.filter((ele) => ele.qtd !== 0)
         }
-        localStorage.setItem("request", JSON.stringify(request))
+        if(request.total === "0"){
+            e.preventDefault()
+            Swal.fire({
+                icon:'error',
+                text:'Adicione itens ao carrinho',
+                background: "#6b2929",
+                color: "white",
+                confirmButtonColor: "black"
+            })
+        }else{
+
+            localStorage.setItem("request", JSON.stringify(request))
+        }
+    
 })
 
 function findElement(arr: Item[], e: HTMLElement):boolean {

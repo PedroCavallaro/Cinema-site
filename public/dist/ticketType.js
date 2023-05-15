@@ -82,7 +82,19 @@ goToPayment.addEventListener("click", (e) => {
         total: totalValue.innerText,
         itens: itensArr.filter((ele) => ele.qtd !== 0)
     };
-    localStorage.setItem("request", JSON.stringify(request));
+    if (request.total === "0") {
+        e.preventDefault();
+        Swal.fire({
+            icon: 'error',
+            text: 'Adicione itens ao carrinho',
+            background: "#6b2929",
+            color: "white",
+            confirmButtonColor: "black"
+        });
+    }
+    else {
+        localStorage.setItem("request", JSON.stringify(request));
+    }
 });
 function findElement(arr, e) {
     if (arr.find((ele) => ele.name === e.dataset.name)) {

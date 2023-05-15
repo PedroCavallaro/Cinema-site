@@ -15,27 +15,7 @@ label{
 h1{
     color: white;
 }
-/* input{
-    border: 2px solid red;
-    height: 20px;
-    border-radius: 15px;
-    font-size: 15px;
-    padding-left: 5px;
-    outline: 0;
-    background-color: #2f2828;
-}
-input:focus{
-    border: 2px solid red;
-    height: 25px;
-    background-color: white;
-    transition: 0.2s;
-}
-input:hover{
-    border: 2px solid red;
-    height: 25px;
-    background-color: white;
-    transition: 0.1s;
-} */
+
 header{
     display: flex;
     justify-content: center;
@@ -55,59 +35,6 @@ header img:hover{
     filter: contrast(5%);
 }
 
-/* .mainContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-}
-.container{
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 350px;
-    width: 300px;
-    border: 2px solid red;
-}
-.container:hover{
-    height: 355px;
-    width: 305px;
-    transition: 0.1s;
-    border: 2px solid rgb(126, 25, 25);
-}
-
-
-.passContainer{
-    margin-top: 10px;
-}
-#registerButton{
-    all: unset;
-    border: 2px solid red;
-    border-radius: 15px;
-    height: 30px;
-    width: 70px;
-    font-size: 15px;
-    text-align: center;
-    color: white;
-}
-#registerButton:hover{
-    border: 2px solid rgb(126, 25, 25);
-    transition: 0.2s;
-}
-.foot{
-    margin-top: 10px;
-}
-.titlle{
-    position: relative;
-    top: -40px;
-    object-fit: fill;
-
-}
-.titlle h1{
-    position: relative;
-} */
 main{
     width: 100dvw;
     height: 100dvh;
@@ -131,11 +58,13 @@ input[type="text"], input[type="password"]{
     width: 12rem;
     border: 2px solid red;
     background-color: #2f2828;
+    color: red;
 }
 input[type="text"]:focus, input[type="password"]:focus{
     outline: none;    
     border: 2px solid red;
     background-color:white;
+    color: black;
 }
 form{
 
