@@ -53,6 +53,17 @@ methodButton.forEach((e: HTMLInputElement)=>{
             case methods.crediCard:
                 cards(paymentInfo)
                 validateForm()
+                const cardNumber = document.querySelectorAll(".infoInput")
+                cardNumber[2].addEventListener("keyup", (e:any)=>{
+                    
+                    if(isNaN(e.target.value) || e.target.value === ""){
+                        e.target.style.animation = "shake 1s infinite"
+                        e.target.style.outlineColor = "red"  
+                    }else{
+                        e.target.style.animation = ""
+                        e.target.style.outlineColor = "green"
+                    }
+                })
                 break;
 
             case methods.debitCard:
@@ -105,7 +116,7 @@ endButton.addEventListener("click", (e)=>{
             confirmButtonColor: "black"
         })
     }else{
-        
+
         const radio = document.querySelector("input[type='radio']:checked") 
     }
 })
@@ -188,4 +199,9 @@ function validateForm(){
                         }
                     })
                 })
+}
+
+function validateCardNumber(e){
+
+
 }

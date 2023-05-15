@@ -33,6 +33,17 @@ methodButton.forEach((e) => {
             case methods.crediCard:
                 cards(paymentInfo);
                 validateForm();
+                const cardNumber = document.querySelectorAll(".infoInput");
+                cardNumber[2].addEventListener("keyup", (e) => {
+                    if (isNaN(e.target.value) || e.target.value === "") {
+                        e.target.style.animation = "shake 1s infinite";
+                        e.target.style.outlineColor = "red";
+                    }
+                    else {
+                        e.target.style.animation = "";
+                        e.target.style.outlineColor = "green";
+                    }
+                });
                 break;
             case methods.debitCard:
                 cards(paymentInfo);
@@ -144,4 +155,6 @@ function validateForm() {
             }
         });
     });
+}
+function validateCardNumber(e) {
 }
